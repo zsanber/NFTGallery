@@ -20,7 +20,6 @@ function App() {
         <Route path="/forgotten" element={ <Forgotten /> } />
         <Route path="/register" element={<Register />} />
 
-
       </Routes>
     </BrowserRouter>
     </>
