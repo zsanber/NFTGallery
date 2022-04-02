@@ -1,5 +1,5 @@
 .reg{
-    background-image: linear-gradient(to right top, #ff0000, #e70043, #ba0063, #82126f, #482566, #482566, #482566, #482566, #82126f, #ba0063, #e70043, #ff0000);
+    background-image: linear-gradient(to right top, #e2a1a1, #f1aa9b, #fbb594, #ffc28d, #fed188, #edd987, #d9e08c, #c4e797, #a4e4a7, #88dfb8, #74d8c8, #6dd0d3);
     height: 100vh;
     object-fit: cover;
     margin-left: 0 !important;
