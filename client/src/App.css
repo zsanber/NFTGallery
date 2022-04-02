@@ -1,9 +1,9 @@
-* {
-    font-family: 'Roboto Serif', serif
+*{
+    font-family: 'Roboto Serif', serif;
+    background-image: linear-gradient(to right top, #ff0000, #e70043, #ba0063, #82126f, #482566, #482566, #482566, #482566, #82126f, #ba0063, #e70043, #ff0000);
 };
 
 .reg {
-    background-image: linear-gradient(to right top, #ff0000, #e70043, #ba0063, #82126f, #482566, #482566, #482566, #482566, #82126f, #ba0063, #e70043, #ff0000);
     height: 100vh;
     object-fit: cover;
     margin-left: 0 !important;
