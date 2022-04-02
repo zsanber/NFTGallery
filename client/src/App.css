@@ -1,3 +1,35 @@
 * {
     font-family: 'Roboto Serif', serif
-    };
+};
+
+.reg {
+    background-image: linear-gradient(to right top, #ff0000, #e70043, #ba0063, #82126f, #482566, #482566, #482566, #482566, #82126f, #ba0063, #e70043, #ff0000);
+    height: 100vh;
+    object-fit: cover;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    display: flex;
+    justify-content: center;
+};
+
+.box {
+    width: 500px;
+    height: 450px;
+    padding: 50px 70px;
+    background: white;
+    text-align: center;
+    transition: 0.25s;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+};
+
+.card {
+    border-top: 0 !important;
+};
+
+.rounded {
+    border-radius: 0.5rem !important;
+};
