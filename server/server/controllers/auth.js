@@ -16,7 +16,7 @@ const register=(req,res)=>{
         const regDate=new Date()
         const regDateStr=regDate.getFullYear()+'.'+(regDate.getMonth()+1)+'.'+regDate.getDate()
         const token=myToken()
-        db.query('insert into user (username,email,password,created_at,status,confirmationCode) values (?,?,?,?,?,?)',
+        db.query('INSERT INTO user (username,email,password,created_at,status,confirmationCode) VALUES (?,?,?,?,?,?)',
             [username,email,hashedPw,regDateStr,'pending','user',token],(err,result) => {
                 if(err) {
                     console.log('insert error:',err)
@@ -37,7 +37,7 @@ const register=(req,res)=>{
 const login=(req,res)=>{
     console.log('post....',req.body)
     const {email,password} = req.body
-    db.query('select iduser,password,username,status from user where email=?',[email],(err,result) => {
+    db.query('SELECT iduser,password,username,status FROM user WHERE email=?',[email],(err,result) => {
         if(err)
             res.send({"message":err})
         if(result.length==1){
