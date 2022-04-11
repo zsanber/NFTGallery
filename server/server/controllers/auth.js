@@ -2,7 +2,7 @@ const mysql =require('mysql');
 const configDb=require('../configDb')
 const db=mysql.createConnection(configDb)
 const {myToken}=require('../models/token')
-const sendConfirmationEmail = require('../models/sendConfirmationEmail')
+
 
 const bcrypt =require('bcryptjs');
 
@@ -27,7 +27,7 @@ const register=(req,res)=>{
                     
                     
                     //email küldés
-                    sendConfirmationEmail(username,email,token)
+                    
                     res.send({message:'Kérlek nézd meg az email fiókodat!'})
                 }
             })
