@@ -65,10 +65,12 @@ export const Home=()=> {
         </div>  
         
         <Modal show={showModal} onHide={handleCloseModal} backdrop="false" centered>
-                <Modal.Body className="d-flex justify-content-center" onClick={handleCloseModal}>
-                    <img className="inline-flex" src={photo.url} />
-                    <button className="btn btn-info form-control rounded mt-2 mb-1 fs-5 fw-bold text-white" 
-                    href="" >Information about the image</button>
+                <Modal.Body className="text-center" onClick={handleCloseModal}>
+                    <img className="img-fluid" src={photo.url} />
+                    <button className="col-3 btn btn-info form-control rounded mt-2 mb-1 fs-5 fw-bold text-white" 
+                         href="" >Information about the image</button>
+                    <button className="col-1 btn btn-danger form-control rounded mt-2 mb-1 fs-5 fw-bold text-white" 
+                         href="" >Delete</button>
                 </Modal.Body>
         </Modal>     
         </div>            

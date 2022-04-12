@@ -71,6 +71,11 @@
     z-index: 1;
 }
 
+.sidebar {
+    transition:none;
+    background: none;
+}
+
 .homeBoxContent::-webkit-scrollbar {    
     width: 12px;
     margin-right: 10px;
