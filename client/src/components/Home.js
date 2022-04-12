@@ -1,46 +1,73 @@
-import React,{useEffect, useState} from 'react';
+import React,{useEffect, useState, useReducer} from 'react';
 import axios from 'axios'
+import { Modal } from 'react-bootstrap';
 import { Sidebar } from './Sidebar';
 
 export const Home=()=> {
-    const [photos,setPhotos]=useState([])
+    const [, forceUpdate] = useReducer(x => x + 1, 0);
+    const [photos, setPhotos]=useState([])
+    const [showModal, setShowModal] = useState(false);
+    const [photo, setPhoto] = useState({});
+
+    const handleCloseModal = () => setShowModal(false);
+    const handleShowModal = (item) => {
+        setPhoto(item);
+        setShowModal(true);
+    }
+
     useEffect(()=>{
         fetchImages();
     },[]) 
 
     const fetchImages = async () => {
         try {
-            const resp = await axios.get(`https://jsonplaceholder.typicode.com/photos`);
-            setPhotos(resp.data)
+            const resp = await axios.get(`https://jsonplaceholder.typicode.com/photos`);            
+            setPhotos(resp.data.slice(0, 200))
         } catch (err) {
             console.error(err);
         }
       };
 
+      function toogleInfo(item) {
+        item.showInfo = !item.showInfo;
+        forceUpdate();
+      };
+
     return (
-            <div className="homeBackground position-absolute pt-5 pb-5 ">
-                <div  className="homeBox col-7 p-4 column">
-                    <div class="card-container">
-                            {photos.map((item,i) => (
-                                <div key={i} className="card d-flex flex-row d-inline-flex justify-content-between align-items-center flex-wrap p-2" data-bs-toggle="modal" data-bs-target="#ImageModal">
-                                    <img src={item.thumbnailUrl} alt={item.title} 
-                                            style={ item.showInfo ? {display : 'img'} : {display : 'block'}}
-                                            onClick={item.showInfo = true} />
-                                    <div style={ !item.showInfo ? {display : 'none'} : {display : 'block'} }
-                                            onClick={item.showInfo = true}>
-                                        <div class="back">
-                                            <div class="header">
-                                                <h5 class="motto">"mindenféle infó ami renderelődik "</h5>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                </div>
-                            ))}
-                    </div>
-                </div>
-            <div className="homeBoxSideBar col-3 ml-20">
-                <Sidebar />
-            </div> 
-        </div>       
+        <div>
+            <div className="homeBackground pt-5 pb-5 pr-5 pl-5 ">
+                <div className="homeBoxSideBar col-3 mr-20">
+                    <Sidebar />
+                </div>     
+
+            <div className="homeBox col-7">
+                        <div className="homeBoxContent">
+                        {photos.map((item,i) => (
+                            <div key={i} 
+                            className="d-flex d-inline-flex p-2" 
+                            onClick={() => handleShowModal(item)}>
+                                <img src={item.thumbnailUrl} alt={item.title} 
+                                        style={{ display : item.showInfo ? 'none' : 'block' }} />
+                                <img src={item.url} alt={item.title} 
+                                        style={{ display : !item.showInfo ? 'none' : 'block' }} />
+                                {/* <div style={{ display : item.showInfo ? 'block' : 'none' }}>
+                                    <div className="back">
+                                        <div className="header">
+                                            <h5 className="motto">"mindenféle infó ami renderelődik "</h5>
+                                        </div>
+                                    </div> 
+                                </div> */}
+                            </div>
+                        ))}   
+                        </div>    
+                </div>            
+        </div>  
+        
+        <Modal show={showModal} onHide={handleCloseModal} backdrop="false" centered>
+                <Modal.Body onClick={handleCloseModal}>
+                    <img src={photo.url} />
+                </Modal.Body>
+            </Modal>     
+        </div>            
   )
 }
