@@ -35,42 +35,42 @@ export const Home=()=> {
 
     return (
         <div>
-            <div className="homeBackground pt-5 pb-5 pr-5 pl-5 ">
-                <div className="homeBoxSideBar col-3 mr-20">
-                    <Sidebar />
-                </div>     
+            <div className="homeBackground pt-5 pb-5 pr-5 pl-5">
+                <div className="homeBoxSideBar col-3 ml-20 order-2"> <Sidebar /> </div>  
+                <div className="homeBox col-7 order-1">
+                            <div className="homeBoxContent">
+                            {photos.map((item,i) => (
+                                <div key={i} 
+                                className="d-flex d-inline-flex p-2" 
+                                onClick={() => handleShowModal(item)}>
+                                    <img src={item.thumbnailUrl} alt={item.title} 
+                                            style={{ display : item.showInfo ? 'none' : 'block' }} />
+                                    <img src={item.url} alt={item.title} 
+                                            style={{ display : !item.showInfo ? 'none' : 'block' }} />
+                                    
+                                    {/* <div style={{ display : item.showInfo ? 'block' : 'none' }}>
+                                        <div className="back">
+                                            <div className="header">
+                                                <h5 className="motto">"mindenféle infó ami renderelődik "</h5>
+                                            </div>
+                                        </div> 
+                                    </div> */}
+                                </div>
+                            ))}  
+                            <div className="homeBoxCarousel row">
 
-            <div className="homeBox col-7">
-                        <div className="homeBoxContent">
-                        {photos.map((item,i) => (
-                            <div key={i} 
-                            className="d-flex d-inline-flex p-2" 
-                            onClick={() => handleShowModal(item)}>
-                                <img src={item.thumbnailUrl} alt={item.title} 
-                                        style={{ display : item.showInfo ? 'none' : 'block' }} />
-                                <img src={item.url} alt={item.title} 
-                                        style={{ display : !item.showInfo ? 'none' : 'block' }} />
-                                {/* <div style={{ display : item.showInfo ? 'block' : 'none' }}>
-                                    <div className="back">
-                                        <div className="header">
-                                            <h5 className="motto">"mindenféle infó ami renderelődik "</h5>
-                                        </div>
-                                    </div> 
-                                </div> */}
-                            </div>
-                        ))}   
-                        </div>    
-                </div>            
+                            </div> 
+                </div>    
+            </div>              
         </div>  
         
         <Modal show={showModal} onHide={handleCloseModal} backdrop="false" centered>
-                <Modal.Body className="justify-center" onClick={handleCloseModal}>
-                    <img src={photo.url} />
-                    <button className="btn btn-info form-control rounded mt-2 mb-1 fs-5 fw-bold text-white justify-center" 
+                <Modal.Body className="d-flex justify-content-center" onClick={handleCloseModal}>
+                    <img className="inline-flex" src={photo.url} />
+                    <button className="btn btn-info form-control rounded mt-2 mb-1 fs-5 fw-bold text-white" 
                     href="" >Information about the image</button>
                 </Modal.Body>
-
-            </Modal>     
+        </Modal>     
         </div>            
   )
 }
