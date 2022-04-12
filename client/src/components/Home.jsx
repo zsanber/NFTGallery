@@ -4,7 +4,7 @@ import { Modal } from 'react-bootstrap';
 import { Sidebar } from './Sidebar';
 
 export const Home=()=> {
-    const [, forceUpdate] = useReducer(x => x + 1, 0);
+    const [forceUpdate] = useReducer(x => x + 1, 0);
     const [photos, setPhotos]=useState([])
     const [showModal, setShowModal] = useState(false);
     const [photo, setPhoto] = useState({});
@@ -73,6 +73,6 @@ export const Home=()=> {
                          href="" >Delete</button>
                 </Modal.Body>
         </Modal>     
-        </div>            
+    </div>            
   )
 }
