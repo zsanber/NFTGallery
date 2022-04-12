@@ -1,7 +1,8 @@
 *{
     font-family: 'Roboto Serif', serif;
   }
-  
+ 
+/*REG,LOGIN*/  
 .reg, .homeBackground{
     background-image: linear-gradient(to right top, #e2a1a1, #f1aa9b, #fbb594, #ffc28d, #fed188, #edd987, #d9e08c, #c4e797, #a4e4a7, #88dfb8, #74d8c8, #6dd0d3);
     background-repeat: no-repeat;
@@ -36,15 +37,23 @@
     margin-left: 20px
 }
 
+/*HOME*/
 .homeBox {
-    overflow: scroll;
+    padding: 20px;
     opacity: 0.6;
-    padding: 40px 60px;
     background: white;
     transition: 0.25s;
     border-radius: 30px;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);   
 }
+
+.homeBoxContent {
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+}
+
 .homeBoxSideBar {
     opacity: 0.6;
     padding: 40px 60px;
@@ -57,41 +66,29 @@
     z-index: 1;
 }
 
-
-/*CARD*/
-.navbar-default .navbar-nav > li > a{
-    padding: 15px 15px;
-    margin: 5px 0;
+.homeBoxContent::-webkit-scrollbar {    
+    width: 12px;
+    margin-right: 10px;
 }
 
-.navbar-default{
-    padding: 10px 0;
-    background-color: rgba(255, 255, 255, 0.95);
-    border-color: transparent;
-    box-shadow: 0 0px 13px rgba(0,0,0,.2);
+.homeBoxContent::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+
+.homeBoxContent::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+.modal-content {
+    background: none !important;
+    border: none !important;
 }
 
 
 
 
-/*BUTTON
-.btn-info,
-.btn-info:hover,
-.btn-info:focus{
-    color: #FFF !important;
-    background-color: #00bbff !important;
-    border-color: #00bbff !important;
-}
-
-.btn-info{
-    opacity: .8;
-    transition: all 0.1s;
-    -webkit-transition: all 0.1s;
-}
-.btn-info:hover,
-.btn-info:focus{
-    opacity: 1;
-} */
 
 
 

@@ -64,9 +64,12 @@ export const Home=()=> {
         </div>  
         
         <Modal show={showModal} onHide={handleCloseModal} backdrop="false" centered>
-                <Modal.Body onClick={handleCloseModal}>
+                <Modal.Body className="justify-center" onClick={handleCloseModal}>
                     <img src={photo.url} />
+                    <button className="btn btn-info form-control rounded mt-2 mb-1 fs-5 fw-bold text-white justify-center" 
+                    href="" >Information about the image</button>
                 </Modal.Body>
+
             </Modal>     
         </div>            
   )
