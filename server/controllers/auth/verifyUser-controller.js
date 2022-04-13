@@ -1,0 +1,1 @@
+export const verifyUserModel=require('../../models/auth/verifyUser-model')

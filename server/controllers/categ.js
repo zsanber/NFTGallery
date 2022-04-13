@@ -4,7 +4,7 @@ const db=mysql.createConnection(configDb)
 
 
 
-const getCateg=(req,res)=>{
+const getPhotos=(req,res)=>{
     db.query(`select idcategorie,name from categorie order by name `,(err,results)=>{
     if(err)
         console.log(err)
@@ -13,4 +13,4 @@ const getCateg=(req,res)=>{
     })
 }
 
-module.exports ={getCateg}
+module.exports ={getPhotos}

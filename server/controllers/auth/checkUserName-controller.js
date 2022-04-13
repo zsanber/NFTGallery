@@ -1,0 +1,1 @@
+export const checkUserName=require('../../models/auth/checkUserName-model')

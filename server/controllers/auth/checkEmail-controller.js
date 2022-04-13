@@ -1,0 +1,1 @@
+export const checkEmailModel=require('../../models/auth/checkEmail-model')

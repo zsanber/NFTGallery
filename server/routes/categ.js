@@ -1,7 +1,7 @@
 const express=require('express')
 const router=express.Router();
 
-const {getCateg}=require('../controllers/categ')
+const {getPhotos}=require('../controllers/categ')
 
 router.route('/').get(getCateg)
 

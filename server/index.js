@@ -5,8 +5,7 @@ const fileUpload=require('express-fileupload')
 const morgan=require('morgan')
 
 
-const auth = require('./routes/auth')
-const categ = require('./routes/categ')
+
 
 const app=express()
 
@@ -18,8 +17,7 @@ app.use(express.static("build"))
 app.use(fileUpload({useTempFiles:true}))
 app.use(morgan('dev'))
 
-app.use('/auth',auth)
-app.use('/categ',categ)
+
 
 const port= 5000
 
