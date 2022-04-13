@@ -9,8 +9,6 @@ export const Sidebar = ({categ,setSelCateg}) => {
         <span className="m-1 p-1 text-center w-75 fw-bold border-top border-bottom ">Welcome USERNAME</span>
         <button className="btn btn-info form-control rounded mt-1 mb-1 fs-5 fw-bold text-white" 
             href="">Upload</button>
-        <button className="btn btn-info form-control rounded mt-1 mb-1 fs-5 fw-bold text-white" 
-            href="">Kell még valami?</button>
       </div>
 
       <div className="categories d-flex flex-column align-items-center">

@@ -49,10 +49,6 @@
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);   
 }
 
-.homeBoxCarousel {
-
-}
-
 .homeBoxContent {
     overflow: scroll;
     overflow-x: hidden;
@@ -98,7 +94,18 @@
 }
 
 
-
+.navbar {
+    height: 60px;
+    padding: 30px 30px;
+    background: white;
+    text-align: center;
+    transition: 0.25s;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
 
 
 
