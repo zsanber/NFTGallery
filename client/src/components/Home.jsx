@@ -1,8 +1,9 @@
 import React,{useEffect, useState, useReducer} from 'react';
+import { motion } from "framer-motion";
 import axios from 'axios'
 import { Modal } from 'react-bootstrap';
 import { Sidebar } from './Sidebar';
-import { TopBar } from './Topbar';
+import { NavBar } from './NavBar';
 
 export const Home=()=> {
     const [forceUpdate] = useReducer(x => x + 1, 0);
@@ -43,11 +44,13 @@ export const Home=()=> {
       };
 
     return (
-        <div>
-        <TopBar /> 
-            <div className="homeBackground pt-5 pb-5 pr-5 pl-5">
-                <div className="homeBoxSideBar col-3 ml-20 order-2"> <Sidebar /> </div>  
-                <div className="homeBox col-7 order-1">
+        <>
+        <div className="homeBackground">
+        <NavBar /> 
+          <div className="container">
+            <div className="row">
+                <div className="homeBoxSideBar col-3 mt-5 mb-5 ml-20 order-2"> <Sidebar /> </div>  
+                <div className="homeBox col-7 mb-5 mt-5 order-1">
                             <div className="homeBoxContent">
                             {photos.map((item,i) => (
                                 <div key={i} 
@@ -59,13 +62,20 @@ export const Home=()=> {
                                             style={{ display : !item.showInfo ? 'none' : 'block' }} />
                                 </div>
                             ))}  
-                </div>    
+                    </div> 
+                </div>   
             </div>              
         </div>  
 
         <Modal show={showModal} onHide={handleCloseModal} backdrop="false" centered>
                 <Modal.Body className="text-center" onClick={handleCloseModal}>
-                    <img className="img-fluid" src={photo.url} />
+                    <motion.img
+                    className="movingImage img-fluid"
+                    src={photo.url} 
+                    whileHover={{ scale: 1.5}}
+                    whileTap={{ scale: 0.8, rotate: -90, borderRadius: "100%" }}
+                    />
+
                     <button className="col-3 btn btn-info form-control rounded mt-2 mb-1 fs-5 fw-bold text-white" 
                          href="" >Information about the image</button>
                     <button className="col-1 btn btn-danger form-control rounded mt-2 mb-1 fs-5 fw-bold text-white" 
@@ -96,7 +106,7 @@ export const Home=()=> {
                          href="" >Delete</button>
                 </Modal.Body>
         </Modal>   */}
-
-    </div>            
+        </div>
+    </>            
   )
 }
