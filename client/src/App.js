@@ -7,6 +7,7 @@ import {Register} from './components/Register';
 import {Login} from './components/Login';
 import {Forgotten} from './components/Forgotten';
 import {Home} from './components/Home';
+import {Upload} from './components/Upload';
 import axios from 'axios';
 
 
@@ -38,6 +39,7 @@ function App() {
         <Route path="/forgotten" element={ <Forgotten /> } />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/upload" element={<Upload />} />
 
       </Routes>
     </BrowserRouter>

@@ -1,6 +1,6 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
-import {SearchBar} from './SearchBar';
+import {NavLink, useNavigate} from 'react-router-dom';
+import {SearchBar} from './SearchBar/SearchBar';
 import myLogo from "./myLogo.png";
 import avatar from './avatar.svg'
 
@@ -19,7 +19,7 @@ export const NavBar=({})=> {
               <li className="nav-item ms-auto">
               <NavLink to="/upload" className="nav-link" href="#">upload image</NavLink>
               </li>
-              <li className="nav-item ">
+              <li className="nav-item navCategories">
               <NavLink to="/categories" className="nav-link " aria-current="page" href="#">categories</NavLink>
               </li>
           </ul>
@@ -27,6 +27,7 @@ export const NavBar=({})=> {
               {(<li className="nav-item nav-signout">
               <NavLink to="/signout" className="nav-link" href="#">sign out</NavLink>
               </li>)}
+            
           </ul>
         <SearchBar placeholder="Search" />
         </div>
@@ -35,6 +36,7 @@ export const NavBar=({})=> {
             <img  className="nav-img" src={avatar} alt="" title=""/>
             </NavLink>}
         </div>
+        
   </div>
 </nav>
 </div>
