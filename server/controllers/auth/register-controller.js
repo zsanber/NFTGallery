@@ -15,6 +15,7 @@ export const register=(req,res)=>{
         const regDate=new Date()
         const regDateStr=regDate.getFullYear()+'.'+(regDate.getMonth()+1)+'.'+regDate.getDate()
         const token=myToken()
+        //querie done
         db.query('INSERT INTO user (username,email,password,created_at,status,confirmationCode) VALUES (?,?,?,?,?,?)',
             [username,email,hashedPw,regDateStr,'pending','user',token],(err,result) => {
                 if(err) {

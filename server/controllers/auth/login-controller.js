@@ -2,7 +2,7 @@ const mysql =require('mysql');
 const configDb=require('../../configDb')
 const db=mysql.createConnection(configDb)
 
-export const login=(req,res)=>{
+export const login=(req,res)=>{ //querie done
     console.log('post....',req.body)
     const {email,password} = req.body
     db.query('SELECT iduser,password,username,status FROM user WHERE email=?',[email],(err,result) => {

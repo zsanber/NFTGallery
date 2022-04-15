@@ -3,16 +3,16 @@ const configDb=require('../../configDb')
 const db=mysql.createConnection(configDb)
 
 
-export const verifyUser=(req,res)=>{
+export const verifyUser=(req,res)=>{ //querie done
     console.log('verify user')
     const confirmationCode= req.params.confirmationCode
-    db.query('SELECT count(*) nr from users where confirmationCode=?',[confirmationCode], (error, results)=> {
+    db.query('SELECT count(*) nr from user where confirmationCode=?',[confirmationCode], (error, results)=> {
         if(error)
             res.status(404).send({message:`Error-activation failed:${error}`})
         if(results.nr==0)
             res.status(404).send({ message: "User Not found." });
         //update: pending->active
-        db.query('update users set status=? where confirmationCode=?',['active',confirmationCode],(err,result)=>{    //this is a callback function :what we want to do after insert
+        db.query('update user set status=? where confirmationCode=?',['active',confirmationCode],(err,result)=>{    //this is a callback function :what we want to do after insert
             if(err){
                 console.log(`Error-activation failed:${err}`)
                 res.send({message:`Error-activation failed:${err}`})
