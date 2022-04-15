@@ -27,12 +27,31 @@ const createPhoto= async (req,res)=>{
                 res.send({message:`Error-insert:${err}`})
             }
             if(result){
-                console.log('Sikeres insert:',result.insertId)
-                res.send({message:`Sikeres publikálás!`})
+                console.log('Successful insert:',result.insertId)
+                res.send({message:`Upload done!`})
             }
         }
     )
 
+}
+
+const updatePhoto=(req,res) => {
+    const {id}=req.params;
+    console.log('put:',req.body)
+    const {title,categ_id,story}=req.body
+    let actDate=new Date()
+    actDate=actDate.toISOString().split('T')[0] + ' ' + actDate.toTimeString().split(' ')[0];
+    db.query('update posts set title=? , categorie_idcategorie=? , description=? , updated_at=? where id=?',
+        [title,categ_id,story,actDate,id],
+        (err, result)=>{
+            if(err){
+                res.send({message:`Failed to change data!-${err}`})
+            }
+            if(result){
+                res.send({message:`CHANGE is ready!`})
+            }
+        }
+    )
 }
 //Photo delete
 const deletePhoto=(req,res) => {
@@ -41,10 +60,10 @@ const deletePhoto=(req,res) => {
     db.query('delete from image where idimage=?',[id],
         (err, result)=>{
             if(err){
-                res.send({message:`Nem sikerült a törlés!-${err}`})
+                res.send({message:`DELETE failed!-${err}`})
             }
             if(result){
-                res.send({message:`Sikeres törlés!`})
+                res.send({message:`Successful DELETE`})
             }
         }
     )
@@ -85,4 +104,4 @@ const getPhoto=(req,res)=>{ //querie done
     }
     
 
-module.exports = {createPhoto,deletePhoto,getPhoto,getPhotos,getPhotosFiltered}
+module.exports = {createPhoto,updatePhoto,deletePhoto,getPhoto,getPhotos,getPhotosFiltered}
