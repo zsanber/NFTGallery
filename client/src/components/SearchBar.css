@@ -24,3 +24,8 @@
     cursor: pointer;
     z-index: 999;
 }
+
+.input{
+    background-color:transparent !important;
+    border: transparent !important;
+}

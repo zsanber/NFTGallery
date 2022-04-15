@@ -116,18 +116,12 @@
 
 /*NavBar*/
 .navcontainer {
-    text-align: center;
     width: 100%;
     margin: 0;
-    padding: 0;
-    align-items: center;
+    padding: 0;  
 }
 .navbar {
     max-height: 50px;
-    text-align: center;
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
     width: 98%;
     margin-left: auto;
     margin-right: auto;
@@ -139,13 +133,16 @@
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+    display: flex;
+    justify-content: space-between;
 }
-/*.search-icon{
+
+.search-icon{
     cursor: pointer;
     max-height: 85%;
     margin: 0 auto;
     padding: 0 auto;
-}*/
+}
 
 .nav-link{
     color: rgba(rgb(6, 6, 6), 0.9) !important;
@@ -157,7 +154,6 @@
 }
 .nav-item{
     align-items: center;
-    justify-content:center;
 }
 
 .nav-img{
