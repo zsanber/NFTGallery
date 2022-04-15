@@ -49,8 +49,8 @@ export const Home=()=> {
         <NavBar /> 
           <div className="container">
             <div className="row">
-                <div className="homeBoxSideBar col-3 mt-5 mb-5 ml-20 order-2"> <Sidebar /> </div>  
-                <div className="homeBox col-7 mb-5 mt-5 order-1">
+            <Sidebar />
+                <div className="homeBox col-8 mb-5 mt-5 order-1">
                             <div className="homeBoxContent">
                             {photos.map((item,i) => (
                                 <div key={i} 
@@ -72,8 +72,8 @@ export const Home=()=> {
                     <motion.img
                     className="movingImage img-fluid"
                     src={photo.url} 
-                    whileHover={{ scale: 1.5}}
-                    whileTap={{ scale: 0.8, rotate: -90, borderRadius: "100%" }}
+                    whileHover={{ scale: 1.03}}
+                    whileTap={{ scale: 0.8, rotate: -180, borderRadius: "90%" }}
                     />
 
                     <button className="col-3 btn btn-info form-control rounded mt-2 mb-1 fs-5 fw-bold text-white" 
