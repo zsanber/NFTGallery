@@ -1,3 +1,4 @@
+require('dotenv').config();
 const mysql =require('mysql');
 const configDb=require('../../configDb')
 const db=mysql.createConnection(configDb)
@@ -10,4 +11,5 @@ const getCategory=(req,res)=>{ //querie done
         res.status(200).send(results)
     })
 }
+
 module.exports = {getCategory}
