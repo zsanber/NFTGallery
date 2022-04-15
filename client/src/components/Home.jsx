@@ -65,8 +65,13 @@ export const Home=()=> {
                             ))}  
                     </div> 
                 </div>   
-            </div>              
+            </div>      
+            <div className="col-12 d-flex flex-column justify-content-end align-items-end fw-bold">
+                    <Terms />
+            </div>         
         </div>  
+
+          
 
         <Modal show={showModal} onHide={handleCloseModal} backdrop="false" centered>
                 <Modal.Body className="text-center" onClick={handleCloseModal}>
@@ -84,9 +89,7 @@ export const Home=()=> {
                 </Modal.Body>
         </Modal>  
 
-        <div className="col-12 d-flex flex-column justify-content-end align-items-end fw-bold">
-            <Terms />
-        </div>   
+        
         
        {/* <Modal show={showModal} onHide={handleCloseModal} backdrop="false" centered>
                 <Modal.Body className="text-center" onClick={handleCloseModal}>

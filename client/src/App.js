@@ -14,10 +14,21 @@ import axios from 'axios';
 function App() {
   const [user,setUser]=useState(true)
   const [categ,setCateg]=useState([])
+  const [userName,setUserName]=useState(localStorage.getItem('userName')?localStorage['userName']:'');
+  const [userId,setUserId]=useState( localStorage.getItem('userId')?localStorage['userId']:0);
+  const [posts,setPosts]=useState([])
 
   useEffect(() => {
     fetchCateg()
   },[])
+
+  useEffect(()=> {
+
+    localStorage.setItem('user', user)
+    localStorage.setItem('userName', userName)
+    localStorage.setItem('userId', userId)
+
+  },[user,userName, userId]);
 
   const fetchCateg=async () => {
     let url='/categ'
@@ -35,9 +46,10 @@ function App() {
     <>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={ userName ? <Home categ={categ} posts={posts} setPosts={setPosts}/>
+             : <Login setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
         <Route path="/forgotten" element={ <Forgotten /> } />
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={ userName ? <Home categ={categ} posts={posts} setPosts={setPosts}/> : <Register />} />
         <Route path="/home" element={<Home />} />
         <Route path="/upload" element={<Upload />} />
 
