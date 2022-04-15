@@ -32,7 +32,7 @@ export const Terms=()=>{
 
     return (
         <div>
-          <Button color="secondary" alignitems="flex-end" style={{justifyContent: "flex-end"}} onClick={handleClickOpen('paper')}>Terms and Conditions</Button>
+          <Button style={{color: '#00bcd4'}} onClick={handleClickOpen('paper')}>Terms and Conditions</Button>
           <Dialog
             open={open}
             onClose={handleClose}
@@ -60,7 +60,7 @@ export const Terms=()=>{
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose}>Close</Button>
+              <Button style={{color: '#00bcd4'}} onClick={handleClose}>Close</Button>
             </DialogActions>
           </Dialog>
         </div>

@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Modal } from 'react-bootstrap';
 import { Sidebar } from './Sidebar';
 import { NavBar } from './NavBar';
+import {Terms} from './Terms';
 
 export const Home=()=> {
     const [forceUpdate] = useReducer(x => x + 1, 0);
@@ -81,7 +82,11 @@ export const Home=()=> {
                     <button className="col-1 btn btn-danger form-control rounded mt-2 mb-1 fs-5 fw-bold text-white" 
                          href="" >Delete</button>
                 </Modal.Body>
-        </Modal>     
+        </Modal>  
+
+        <div className="col-12 d-flex flex-column justify-content-end align-items-end fw-bold">
+            <Terms />
+        </div>   
         
        {/* <Modal show={showModal} onHide={handleCloseModal} backdrop="false" centered>
                 <Modal.Body className="text-center" onClick={handleCloseModal}>

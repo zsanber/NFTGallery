@@ -39,7 +39,8 @@ export const Login=({ setUser, setUserName, setUserId })=> {
   }
 
     return (
-        <div className="reg">
+        <div className="reg row">
+        <div className="col-12">
             <div className="position-absolute top-50 start-50 translate-middle">
                 <div className="box">
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -55,7 +56,10 @@ export const Login=({ setUser, setUserName, setUserId })=> {
                     <div>{msg}</div>
                 </div>
             </div>
+            </div>
+            <div className="col-12 d-flex flex-column justify-content-end align-items-end fw-bold">
             <Terms />
+            </div>
         </div>
   )
 }
