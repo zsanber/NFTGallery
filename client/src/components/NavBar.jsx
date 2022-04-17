@@ -16,8 +16,8 @@ export const NavBar=({})=> {
         <div className="collapse navbar-collapse" id="navbarNav">
           <img className="nav-myLogo" src={myLogo} alt="logo" />
           <ul className="navbar-nav leftNav mx-auto">
-              <li className="nav-item ms-auto">
-              <NavLink to="/upload" className="nav-link" href="#">upload image</NavLink>
+              <li className="nav-item">
+              <NavLink to="/upload" className="nav-link" aria-current="page" href="#">upload image</NavLink>
               </li>
               <li className="nav-item navCategories">
               <NavLink to="/categories" className="nav-link " aria-current="page" href="#">categories</NavLink>

@@ -19,7 +19,7 @@ function App() {
   const [posts,setPosts]=useState([])
 
   useEffect(() => {
-    fetchCateg()
+    // fetchCateg()
   },[])
 
   useEffect(()=> {

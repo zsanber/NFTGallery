@@ -44,8 +44,6 @@
 .homeBackground{
     background-image: linear-gradient(to right top, #e2a1a1, #f1aa9b, #fbb594, #ffc28d, #fed188, #edd987, #d9e08c, #c4e797, #a4e4a7, #88dfb8, #74d8c8, #6dd0d3);
     background-repeat: no-repeat;
-    max-height: 100vh;
-    min-width: 100vh;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -58,8 +56,8 @@
     transition: 0.25s;
     border-radius: 30px;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.317); 
-    padding: 20px;  
-    height: 80vh;
+    padding: 15px;  
+    height: 78vh;
     display: flex;
     flex-wrap: wrap;
     /*z-index: 1;*/
@@ -78,21 +76,60 @@
 
 .homeBoxSideBar {
     opacity: 0.7;
-    padding: 40px 60px;
+    padding: 0px 60px;
     background: white;
     transition: 0.25s;
     border-radius: 30px;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.317);  
     align-items: center;
     justify-content: center;
-    height: 80vh;
+    height: 78vh;
     display: flex;
     /*z-index: 1;*/
 }
 
 .sidebar {
-    transition: none;
-    background: none;
+    background-color: transparent !important;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.welcome{
+    font-size: clamp(1.25rem,1vw,1rem);
+}
+/*
+.homePictures {
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.317); 
+    border-radius: 30px; 
+}*/
+
+.infoImage {
+    background-color: white;
+    width: 100%;
+    height: 600px;
+    overflow: scroll;
+    overflow-x: hidden;
+    padding: 30px 15px;
+    justify-content: space-evenly;
+    text-align: left;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.317); 
+    border-radius: 30px; 
+}
+.smallImage{
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 15px;
+    border-radius: 30px;
+}
+
+.smallImageDirect {
+    border-radius: 30px;
 }
 
 .homeBoxContent::-webkit-scrollbar {    
@@ -125,7 +162,7 @@
     vertical-align: middle !important;
 }
 
-.navbar {
+.navbar{
     max-height: 50px;
     width: 97%;
     margin-left: auto;
@@ -183,7 +220,8 @@
     height: 550px;
     background: white;
     border-radius: 30px;
-  }
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.317);  
+}
 
 .myLogo{
     max-width: auto;

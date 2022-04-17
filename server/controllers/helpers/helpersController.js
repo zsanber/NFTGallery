@@ -23,7 +23,7 @@ const createPhoto= async (req,res)=>{
         [user_id,title,categ_id,story,cloudFile.url,actDate,cloudFile.public_id],
         (err,result)=>{
             if(err){
-                console.log('Error inser:',err)
+                console.log('Error insert:',err)
                 res.send({message:`Error-insert:${err}`})
             }
             if(result){

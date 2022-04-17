@@ -31,7 +31,7 @@ export const Terms=()=>{
     }, [open]);
 
     return (
-        <div>
+      <div className="row pb-2">
           <Button style={{color: '#00bcd4'}} onClick={handleClickOpen('paper')}>Terms and Conditions</Button>
           <Dialog
             open={open}

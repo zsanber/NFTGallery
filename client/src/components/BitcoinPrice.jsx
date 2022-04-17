@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import logo from "./bitcoin-logo.png";
 import "./BitcoinPrice.css";
 
-const BitcoinPrice = () => {
+export const BitcoinPrice = () => {
     const [price, setPrice] = useState(null);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         fetch("https://blockchain.info/ticker")
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             setPrice(data.USD.last); 
             setLoading(false);       
           })
