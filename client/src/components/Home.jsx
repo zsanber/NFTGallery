@@ -41,15 +41,15 @@ export const Home = () => {
         <div className="container">
           <div className="row justify-content-center">
             <Sidebar />
-            <div className="homeBox col-12 col-md-8 mb- mt-5 order-1">
+            <div className="homeBox col-12 col-md-8 mt-5 order-1">
               <div className="homeBoxContent">
                 {photos.map((item, i) => (
                   <div
                     key={i}
                     className="homePictures d-flex d-inline-flex p-2"
-                    onClick={() => handleShowModal(item)}
-                  >
-                    <img src={item.thumbnailUrl} alt={item.title} />
+                    onClick={() => handleShowModal(item)}>
+                    <img className="homePicture" src={item.thumbnailUrl} alt={item.title} />
+                    <div className="homePictureTitle">{item.title}</div>
                   </div>
                 ))}
               </div>
@@ -69,7 +69,7 @@ export const Home = () => {
                 <motion.img
                 className="movingImage img-fluid"
                 src={photo.url}
-                whileHover={{ scale: 1.03 }}
+                whileHover={{ scale: 1.36 }}
                 whileTap={{ scale: 0.8, rotate: -180, borderRadius: "90%" }}
               />
             }
@@ -85,15 +85,22 @@ export const Home = () => {
                     </div>
                 </div>
             }
-            
-            <button className="col-3 btn btn-info form-control rounded mt-2 mb-1 fs-5 fw-bold text-white"
+            <div className="container">
+              <div className="row justify-content-center">
+              <button className="row col-12 btn btn-info rounded mt-2 mb-1 fs-5 fw-bold text-white"
                     onClick={() => setShowInfo(!showInfo)}>
-              Information about the image
-            </button>
-
-            <button className="col-1 btn btn-danger form-control rounded mt-2 mb-1 fs-5 fw-bold text-white">
-              Delete
-            </button>
+                    Information about the image
+                </button>
+              </div>
+              <div className="row justify-content-center">
+                <button className="col-9 btn btn-success rounded mt-1 mb-1 fs-5 fw-bold text-white">
+                  Edit
+                </button>
+                <button className="col-3 btn btn-danger rounded mt-1 mb-1 fs-5 fw-bold text-white">
+                  Delete
+                </button>
+              </div>
+            </div>
           </Modal.Body>
         </Modal>
       </div>
