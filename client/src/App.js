@@ -51,7 +51,7 @@ function App() {
         <Route path="/forgotten" element={ <Forgotten /> } />
         <Route path="/register" element={ userName ? <Home categ={categ} posts={posts} setPosts={setPosts}/> : <Register />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/upload" element={<Upload />} />
+        <Route path="/upload" element={<Upload categ={categ} />} />
 
       </Routes>
     </BrowserRouter>
