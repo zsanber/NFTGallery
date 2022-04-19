@@ -55,7 +55,9 @@ export const Home = () => {
               </div>
             </div>
           </div>
-          <Terms />
+          <div className="col-12 d-flex flex-column justify-content-end align-items-end fw-bold">
+            <Terms />
+          </div>
         </div>
 
         <Modal

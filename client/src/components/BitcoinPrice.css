@@ -5,6 +5,7 @@
     align-items: center;
     height: 60px;
     padding: 5px;
+    border-radius: 10px;
   }
   .btc-logo {
     height: 25px;
