@@ -15,7 +15,7 @@ export const Login=({ setUser, setUserName, setUserId })=> {
 
   const onSubmit = (data) =>{
     console.log(data);
-    let url = '/auth/login'
+    let url = '/authController/login'
     sendData(url, data)
   }
 
@@ -26,6 +26,7 @@ export const Login=({ setUser, setUserName, setUserId })=> {
       setSuccessful(true)
       setUserName(data.username)
       setUserId(data.userId)
+      setMsg(data.message)
     } catch (err) {
       console.log(err.message);
       console.log(err.response.status)
