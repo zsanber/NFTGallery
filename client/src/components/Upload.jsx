@@ -20,13 +20,11 @@ export const Upload=({userId,categ})=> {
   const verify=async (data,file)=>{
     console.log('verify:',file)
     const isValidImage = await validateImage(file);
-    //setValidImg(isValidImage)
     isValidImage && sendData('/posts',data)//amikor megvan a válasz csak akkor menjen a kérés a szerverre
   }
   
   const sendData=async (url, fdata) =>{
     const formData=new FormData()
-    //formData.append('image',fdata.image[0])
     formData.append('image',selFile[0])
     formData.append('title',fdata.title)
     formData.append('user_id',fdata.user_id)
@@ -39,9 +37,6 @@ export const Upload=({userId,categ})=> {
       setMsg(data.message)
       resp.status===200 ? setSuccessFul(true):setSuccessFul(false)
     }catch(e){
-      //console.log('write-catch:',Object.keys(e))
-      //console.log('write-catch:',e.response)
-      //console.log('write-catch:',Object.keys(e.response))
       setSuccessFul(false)
       setMsg(`'Error while uploading' : ${e.message}`)
     }
