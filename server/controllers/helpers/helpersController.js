@@ -34,7 +34,7 @@ const createPhoto= async (req,res)=>{
     )
 
 }
-
+// Photo update
 const updatePhoto=(req,res) => {
     const {id}=req.params;
     console.log('put:',req.body)
@@ -53,7 +53,7 @@ const updatePhoto=(req,res) => {
         }
     )
 }
-//Photo delete
+// Photo delete
 const deletePhoto=(req,res) => {
     const {id,imageId}=req.params;
     cloudinary.uploader.destroy(imageId)
