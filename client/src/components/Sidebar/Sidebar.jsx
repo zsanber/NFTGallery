@@ -1,6 +1,7 @@
 import React from "react";
-import myLogo from "./myLogo.png";
-import {BitcoinPrice} from "./BitcoinPrice"
+import myLogo from "../Images/myLogo.png";
+import {BitcoinPrice} from "../BitcoinPrice/BitcoinPrice";
+import "./Sidebar.css"
 
 export const Sidebar = ({categ,setSelCateg}) => {
   return (

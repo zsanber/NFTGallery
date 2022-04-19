@@ -2,8 +2,8 @@ import React, { useEffect, useState, useReducer } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { Modal } from "react-bootstrap";
-import { Sidebar } from "./Sidebar";
-import { NavBar } from "./NavBar";
+import { Sidebar } from "./Sidebar/Sidebar";
+import { NavBar } from "./NavBar/NavBar";
 import { Terms } from "./Terms";
 
 export const Home = () => {
@@ -77,7 +77,7 @@ export const Home = () => {
             }
 
             {showInfo &&
-                <div>
+                <div className="infoImageContainer">
                     <div className="infoImage">
                         <div className="smallImage">
                             <img className="smallImageDirect img-fluid" src={photo.url}/>

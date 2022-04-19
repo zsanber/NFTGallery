@@ -1,8 +1,9 @@
 import React from 'react';
 import {NavLink, useNavigate} from 'react-router-dom';
-import {SearchBar} from './SearchBar/SearchBar';
-import myLogo from "./myLogo.png";
-import avatar from './avatar.svg'
+import {SearchBar} from '../SearchBar/SearchBar';
+import "./NavBar.css";
+import myLogo from "../Images/myLogo.png";
+import avatar from '../Images/avatar.svg';
 
 export const NavBar=({})=> {
 
