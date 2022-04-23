@@ -3,7 +3,7 @@ import './SearchBar.css'
 import {useNavigate} from 'react-router-dom'
 
 
-export const SearchBar=({pleceholder,posts})=> {
+export const SearchBar=({placeholder,posts})=> {
     const navigate = useNavigate()
     const [wordEntered,serWordEntered]=useState('')
     const [filteredPosts,setFilteredPosts]=useState([])

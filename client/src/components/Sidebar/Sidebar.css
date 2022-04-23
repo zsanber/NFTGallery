@@ -23,5 +23,9 @@
 }
 
 .welcome{
-    font-size: clamp(1.25rem,1vw,1rem);
+    font-size: clamp(1.35rem,1vw,1rem);
+}
+
+.brands {
+    text-decoration: none;
 }

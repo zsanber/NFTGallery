@@ -8,7 +8,10 @@ import {Login} from './components/Login';
 import {Forgotten} from './components/Forgotten';
 import {Home} from './components/Home';
 import {Upload} from './components/Upload';
+import {Admin} from './components/Admin/Admin';
+import {Logout} from './components/Logout';
 import axios from 'axios';
+import { ConfirmProvider } from 'material-ui-confirm';
 
 
 function App() {
@@ -18,9 +21,6 @@ function App() {
   const [userId,setUserId]=useState( localStorage.getItem('userId')?localStorage['userId']:0);
   const [posts,setPosts]=useState([])
 
-  useEffect(() => {
-    // fetchCateg()
-  },[])
 
   useEffect(()=> {
 
@@ -30,8 +30,12 @@ function App() {
 
   },[user,userName, userId]);
 
-  const fetchCateg=async () => {
-    let url='/categ'
+  useEffect(() => {
+    fetchCateg()
+  },[])
+
+  const fetchCateg = async () => {
+    let url='http://localhost:5000/category'
     try{
       const resp=await axios.get(url)
       console.log(resp.data)
@@ -42,8 +46,10 @@ function App() {
     }
   }
 
+
   return (
     <>
+    <ConfirmProvider>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={ userName ? <Home categ={categ} posts={posts} setPosts={setPosts}/>
@@ -53,8 +59,12 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/upload" element={<Upload categ={categ} />} />
 
+        <Route path="/admin" element={<Admin setUser={setUser} categ={categ} setUserName={setUserName} setUserId={setUserId} posts={posts} setPosts={setPosts} />} />
+        <Route path="/logout" element={<Logout setUser={setUser} categ={categ} setUserName={setUserName} setUserId={setUserId} posts={posts} setPosts={setPosts}/>} />
+
       </Routes>
     </BrowserRouter>
+    </ConfirmProvider>
     </>
   );
 }

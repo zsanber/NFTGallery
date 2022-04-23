@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react'
-import {Home} from './Home'
+import { Login } from './Login'
+import {  useNavigate } from 'react-router-dom';
 
-export const Logout=({setUser,categ,setUserName,setUserId,posts,setPosts})=> {
+export const Logout=({setUser,setUserName,setUserId})=> {
   
+  const navigate = useNavigate();
+
   useEffect(()=>{
      setUser(false)
      setUserName('')
@@ -10,11 +13,11 @@ export const Logout=({setUser,categ,setUserName,setUserId,posts,setPosts})=> {
      localStorage.removeItem('user')
      localStorage.removeItem('userName')
      localStorage.removeItem('userId')
+     navigate("/");
   },[])
  
   return (
     <>
-    <Home categ={categ} posts={posts} setPosts={setPosts}/>
     </>
   )
 }

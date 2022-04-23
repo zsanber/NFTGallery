@@ -5,6 +5,7 @@ import { Modal } from "react-bootstrap";
 import { Sidebar } from "./Sidebar/Sidebar";
 import { NavBar } from "./NavBar/NavBar";
 import { Terms } from "./Terms";
+import {Delete} from "./Delete";
 
 export const Home = () => {
   const [photos, setPhotos] = useState([]);
@@ -34,6 +35,7 @@ export const Home = () => {
     }
   };
 
+
   return (
     <>
       <div className="homeBackground">
@@ -47,8 +49,15 @@ export const Home = () => {
                   <div
                     key={i}
                     className="homePictures d-flex d-inline-flex p-2"
-                    onClick={() => handleShowModal(item)}>
-                    <img className="homePicture" src={item.thumbnailUrl} alt={item.title} />
+                    onClick={() => handleShowModal(item)}
+                    whileHover={{opacity: 1}}
+                  >
+                    <img
+                      className="homePicture"
+                      src={item.thumbnailUrl}
+                      alt={item.title}
+                      loading="lazy"
+                    />
                     <div className="homePictureTitle">{item.title}</div>
                   </div>
                 ))}
@@ -67,38 +76,45 @@ export const Home = () => {
           centered
         >
           <Modal.Body className="text-center">
-            {!showInfo &&
-                <motion.img
+            {!showInfo && (
+              <motion.img
                 className="movingImage img-fluid"
                 src={photo.url}
                 whileHover={{ scale: 1.36 }}
                 whileTap={{ scale: 0.8, rotate: -180, borderRadius: "90%" }}
               />
-            }
+            )}
 
-            {showInfo &&
-                <div className="infoImageContainer">
-                    <div className="infoImage">
-                        <div className="smallImage">
-                            <img className="smallImageDirect img-fluid" src={photo.url}/>
-                        </div>
-                        <h3 className="infoImageTitle">Title: {photo.title}</h3>
-                        <h5 className="infoImageUrl">Url: {photo.url}</h5>
-                    </div>
+            {showInfo && (
+              <div className="infoImageContainer">
+                <div className="infoImage">
+                  <div className="smallImage">
+                    <img
+                      className="smallImageDirect img-fluid"
+                      src={photo.url}
+                    />
+                  </div>
+                  <h4 className="infoImageTitle">Title: {photo.title}</h4>
+                  <h5 className="">Category: {photo.categorie}</h5>
+                  <h5 className="">Description: {photo.description}</h5>
+                  
                 </div>
-            }
+              </div>
+            )}
             <div className="container">
               <div className="row justify-content-center">
-              <button className="row col-12 btn btn-info rounded mt-2 mb-1 fs-5 fw-bold text-white"
-                    onClick={() => setShowInfo(!showInfo)}>
-                    Information about the image
+                <button
+                  className="row col-12 btn btn-info rounded mt-2 mb-1 fs-5 fw-bold text-white"
+                  onClick={() => setShowInfo(!showInfo)}
+                >
+                  Information about the image
                 </button>
               </div>
               <div className="row justify-content-center">
-                <button className="col-9 btn btn-success rounded mt-1 mb-1 fs-5 fw-bold text-white">
+                <button href="/editPost/:postId" className="col-9 btn btn-success rounded mt-1 mb-1 fs-5 fw-bold text-white">
                   Edit
                 </button>
-                <button className="col-3 btn btn-danger rounded mt-1 mb-1 fs-5 fw-bold text-white">
+                <button onClick={<Delete />} className="col-3 btn btn-danger rounded mt-1 mb-1 fs-5 fw-bold text-white">
                   Delete
                 </button>
               </div>
