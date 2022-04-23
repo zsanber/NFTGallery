@@ -5,7 +5,6 @@ import { Modal } from "react-bootstrap";
 import { Sidebar } from "./Sidebar/Sidebar";
 import { NavBar } from "./NavBar/NavBar";
 import { Terms } from "./Terms";
-import {Delete} from "./Delete";
 
 export const Home = () => {
   const [photos, setPhotos] = useState([]);
@@ -25,11 +24,11 @@ export const Home = () => {
   }, []);
 
   const fetchImages = async () => {
+    let url = "http://localhost:5000/photos/";
     try {
-      const resp = await axios.get(
-        `https://jsonplaceholder.typicode.com/photos`
-      );
-      setPhotos(resp.data.slice(0, 200));
+      const resp = await axios.get(url);
+      console.log(resp.data);
+      setPhotos(resp.data);
     } catch (err) {
       console.error(err);
     }
@@ -54,7 +53,7 @@ export const Home = () => {
                   >
                     <img
                       className="homePicture"
-                      src={item.thumbnailUrl}
+                      src={item.link}
                       alt={item.title}
                       loading="lazy"
                     />
@@ -79,7 +78,7 @@ export const Home = () => {
             {!showInfo && (
               <motion.img
                 className="movingImage img-fluid"
-                src={photo.url}
+                src={photo.link}
                 whileHover={{ scale: 1.36 }}
                 whileTap={{ scale: 0.8, rotate: -180, borderRadius: "90%" }}
               />
@@ -91,11 +90,10 @@ export const Home = () => {
                   <div className="smallImage">
                     <img
                       className="smallImageDirect img-fluid"
-                      src={photo.url}
+                      src={photo.link}
                     />
                   </div>
                   <h4 className="infoImageTitle">Title: {photo.title}</h4>
-                  <h5 className="">Category: {photo.categorie}</h5>
                   <h5 className="">Description: {photo.description}</h5>
                   
                 </div>
@@ -114,7 +112,7 @@ export const Home = () => {
                 <button href="/editPost/:postId" className="col-9 btn btn-success rounded mt-1 mb-1 fs-5 fw-bold text-white">
                   Edit
                 </button>
-                <button onClick={<Delete />} className="col-3 btn btn-danger rounded mt-1 mb-1 fs-5 fw-bold text-white">
+                <button onClick="" className="col-3 btn btn-danger rounded mt-1 mb-1 fs-5 fw-bold text-white">
                   Delete
                 </button>
               </div>
