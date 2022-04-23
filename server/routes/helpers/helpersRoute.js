@@ -1,6 +1,6 @@
 const express=require('express')
 const router=express.Router()
-const {getPhotos,getPhoto,updatePhoto,getPhotosFiltered,createPhoto,deletePhoto}=require('../../controllers/helpers/helpersController')
+const {getPhotos,getPhoto,updatePhoto,getPhotosFiltered,createPhoto,deletePhoto,getUsersByAdmin}=require('../../controllers/helpers/helpersController')
 
 router.route('/').get(getPhotos)
 router.route('/:id').get(getPhoto)
@@ -8,6 +8,7 @@ router.route('/:id').put(updatePhoto)
 router.route('/categ/:id').get(getPhotosFiltered)
 router.route('/').post(createPhoto)
 router.route('/:id/:imageId').delete(deletePhoto)
+router.route('/admin').get(getUsersByAdmin)
 
 
 module.exports=router

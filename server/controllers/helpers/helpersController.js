@@ -102,6 +102,16 @@ const getPhoto=(req,res)=>{ //querie done
             res.status(200).send(results)
         })
     }
+//See all user by admin
+    const getUsersByAdmin=(req,res)=>{
+        db.query(`select u.iduser, u.username, u.email, u.created_at, u.updated_at from user u`, (err,results)=>{
+            if(err)
+                console.log(err)
+            else
+                res.status(200).send(result)
+        })
+    }
+
     
 
-module.exports = {createPhoto,updatePhoto,deletePhoto,getPhoto,getPhotos,getPhotosFiltered}
+module.exports = {createPhoto,updatePhoto,deletePhoto,getPhoto,getPhotos,getPhotosFiltered,getUsersByAdmin}
