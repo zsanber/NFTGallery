@@ -12,6 +12,9 @@ const checkEmail=(req,res)=>{ //querie done
     console.log('post....',req.body)
     const {email} = req.body
     db.query('select count(*) nr from user where email=?',[email],(err,result) => {
+        if(err)
+        console.log('Email hiba: ',err)
+        else
         res.send(result)
     })
 }
@@ -20,6 +23,9 @@ const checkUsername=(req,res)=>{ //querie done
     console.log('post....',req.body)
     const {username} = req.body
     db.query('select count(*) nr from user where username=?',[username],(err,result) => {
+        if (err)
+        console.log('Felhasználó hiba: ', err)
+        else
         res.send(result)
     })
 
