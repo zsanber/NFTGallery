@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { Logout } from "../Logout";
-import {Admin} from "../Admin/Admin";
+import { Admin } from "../Admin/Admin";
 import "./NavBar.css";
 import myLogo from "../Images/myLogo.png";
 import avatar from "../Images/avatar.svg";
@@ -63,7 +63,7 @@ export const NavBar = ({ user, userName, admin }) => {
                   <i class="fa fa-caret-down"></i>
                 </div>
                 <div class="dropdown-content">
-                  <a onClick={()=>setCategory(0)}>All</a>
+                  <a onClick={() => setCategory(0)}>All</a>
                   {category.map((item, i) => (
                     <a key={i} onClick={() => setCategory(item.id)}>
                       {item.name}
@@ -94,10 +94,7 @@ export const NavBar = ({ user, userName, admin }) => {
 
                   {
                     <li className="nav-item">
-                      <NavLink 
-                        to="/admin"
-                        href="#"
-                      >
+                      <NavLink to="/admin" href="#">
                         admin
                       </NavLink>
                     </li>
