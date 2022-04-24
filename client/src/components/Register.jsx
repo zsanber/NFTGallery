@@ -25,7 +25,7 @@ export const Register=()=> {
         } = useForm();
     const onSubmit = (data) => {
         console.log(data);
-        const url='/authController/register'
+        const url='/authRoute/register'
         sendData(url,data)
       }
 
