@@ -6,12 +6,14 @@ import { Sidebar } from "./Sidebar/Sidebar";
 import { NavBar } from "./NavBar/NavBar";
 import { Terms } from "./Terms";
 import { confirm } from "react-confirm-box";
+import { useNavigate } from 'react-router-dom'
 
 export const Home = () => {
   const [photos, setPhotos] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [photo, setPhoto] = useState({});
   const [showInfo, setShowInfo] = useState(false);
+  const navigate = useNavigate()
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = (item) => {
@@ -133,7 +135,7 @@ const onClickDeletePicture = async () => {
                 </button>
               </div>
               <div className="row justify-content-center">
-                <button href="LILI" className="col-9 btn btn-success rounded mt-1 mb-1 fs-5 fw-bold text-white">
+                <button onClick={() => navigate('/edit/' + photo.id)} className="col-9 btn btn-success rounded mt-1 mb-1 fs-5 fw-bold text-white">
                   Update
                 </button>
                 <button onClick={onClickDeletePicture} className="col-3 btn btn-danger rounded mt-1 mb-1 fs-5 fw-bold text-white">

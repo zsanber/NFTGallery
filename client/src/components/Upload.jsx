@@ -6,9 +6,9 @@ import { validateImage } from "image-validator";
 import { Terms } from "./Terms";
 
 
-export const Upload=({userId,categ})=> {
+export const Upload=({userId,category})=> {
   const {register, handleSubmit,formState: { errors },reset} = useForm();
-  const [postCateg,setPostCateg]=useState(0)
+  const [photoCateg,setPhotoCateg]=useState(0)
   const [successful,setSuccessFul]=useState(false)
   const [msg,setMsg] =useState('')
   const [selFile,setSelFile] = useState({})
@@ -21,7 +21,7 @@ export const Upload=({userId,categ})=> {
   const verify=async (data,file)=>{
     console.log('verify:',file)
     const isValidImage = await validateImage(file);
-    isValidImage && sendData('/posts',data)//amikor megvan a válasz csak akkor menjen a kérés a szerverre
+    isValidImage && sendData('/photos',data)//amikor megvan a válasz csak akkor menjen a kérés a szerverre
   }
   
   const sendData=async (url, fdata) =>{
@@ -32,7 +32,7 @@ export const Upload=({userId,categ})=> {
     formData.append('categ_id',fdata.categ_id)
     formData.append('story',fdata.story)
     try {
-      const resp=await axios.post(url,formData)
+      const resp=await axios.photos(url,formData)
       const data=await resp.data
       console.log(data)
       setMsg(data.message)
@@ -58,19 +58,19 @@ console.log('Filesize:',selFile.length>0 ? selFile[0].sizeReadable : 0)
                 {...register("image", { required: true })} />
               <div className="err">{errors.image && <span>No file found</span>}</div>
 
-              <input type="text" className="form-control m-2 postTitle" placeholder="Title"
+              <input type="text" className="form-control m-2 photoTitle" placeholder="Title"
                 {...register("title", { required: true })} />
               <div className="err">{errors.title && <span>Title required</span>}</div>
 
               <input type="text"  {...register("user_id")} hidden value={userId} />
 
-              <input disabled={postCateg === 0} type="submit" className="btn btn-primary m-2" value="Upload" />
+              <input disabled={photoCateg === 0} type="submit" className="btn btn-primary m-2" value="Upload" />
             </div>
             <div className="row">
               <div className="col-md-6">
-               <select  className="form-select mb-4" {...register("categ_id")} onChange={(e)=>setPostCateg(e.target.value)}>
+               <select  className="form-select mb-4" {...register("categ_id")} onChange={(e)=>setPhotoCateg(e.target.value)}>
               <option value="0">Choose a category...</option>
-              {categ.map(obj=>(
+              {category.map(obj=>(
                   <option value={obj.id} key={obj.id}>{obj.name}</option>
               ))}
 
