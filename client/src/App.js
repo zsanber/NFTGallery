@@ -16,7 +16,7 @@ import {  useNavigate } from 'react-router-dom';
 function App() {
   const [user, setUser] = useState(true)
   const [categoryList, setCategoryList] = useState([])
-  const [selectedCategory, setSelectedCategory] = useState({})
+  const [selectedCategory, setSelectedCategory] = useState(0)
   const [userName, setUserName] = useState(localStorage.getItem('userName') ? localStorage['userName'] : '');
   const [userId, setUserId] = useState(localStorage.getItem('userId') ? localStorage['userId'] : 0);
 
@@ -48,10 +48,11 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home category={categoryList} selectedCategory={selectedCategory} />} />
+          <Route path="/" element={<Home categoryList={categoryList} selectedCategory={selectedCategory} 
+                                         setSelectedCategory={setSelectedCategory} userName={userName} />} />
           <Route path="/forgotten" element={<Forgotten />} />                    
 
-          <Route path="/upload" element={<Upload category={categoryList} />} />
+          <Route path="/upload" element={<Upload categoryList={categoryList} />} />
           <Route path="/admin" element={<Admin setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
 
           <Route path="/login" element={<Login setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
