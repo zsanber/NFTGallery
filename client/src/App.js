@@ -10,6 +10,7 @@ import { Home } from './components/Home';
 import { Upload } from './components/Upload';
 import { Admin } from './components/Admin/Admin';
 import { Logout } from './components/Logout';
+import { Edit } from './components/Edit';
 import axios from 'axios';
 import {  useNavigate } from 'react-router-dom';
 
@@ -52,6 +53,7 @@ function App() {
                                          setSelectedCategory={setSelectedCategory} userName={userName} />} />
           <Route path="/forgotten" element={<Forgotten />} />                    
 
+          <Route path="/edit/:id" element={<Edit categoryList={categoryList} />} />
           <Route path="/upload" element={<Upload categoryList={categoryList} />} />
           <Route path="/admin" element={<Admin setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
 
