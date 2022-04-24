@@ -5,6 +5,7 @@ import { Modal } from "react-bootstrap";
 import { Sidebar } from "./Sidebar/Sidebar";
 import { NavBar } from "./NavBar/NavBar";
 import { Terms } from "./Terms";
+import { confirm } from "react-confirm-box";
 
 export const Home = () => {
   const [photos, setPhotos] = useState([]);
@@ -33,6 +34,29 @@ export const Home = () => {
       console.error(err);
     }
   };
+
+//confirm box for a delete photo
+const options = {
+  labels: {
+    confirmable: "Yes, I confirm",
+    cancellable: "Cancel"
+  }
+}
+
+const onClickDeletePicture = async () => {
+   const result = await confirm("Are you sure that you want to delete the picture?", options);
+   let url = "http://localhost:5000//:id/:imageId";
+   if (result) {
+     console.log("You click yes!");
+      try {
+        const resp = await axios.delete(url);
+      } catch (err) {
+        console.error(err);
+      }
+     return;
+   }
+   console.log("You click No!");
+ };
 
 
   return (
@@ -109,10 +133,10 @@ export const Home = () => {
                 </button>
               </div>
               <div className="row justify-content-center">
-                <button href="/editPost/:postId" className="col-9 btn btn-success rounded mt-1 mb-1 fs-5 fw-bold text-white">
-                  Edit
+                <button href="LILI" className="col-9 btn btn-success rounded mt-1 mb-1 fs-5 fw-bold text-white">
+                  Update
                 </button>
-                <button onClick="" className="col-3 btn btn-danger rounded mt-1 mb-1 fs-5 fw-bold text-white">
+                <button onClick={onClickDeletePicture} className="col-3 btn btn-danger rounded mt-1 mb-1 fs-5 fw-bold text-white">
                   Delete
                 </button>
               </div>

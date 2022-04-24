@@ -8,10 +8,10 @@ import myLogo from "../Images/myLogo.png";
 import avatar from "../Images/avatar.svg";
 import axios from "axios";
 
-export const NavBar = ({ user, userName, admin }) => {
+export const NavBar = ({user, userName, admin }) => {
   const [category, setCategory] = useState([]);
 
-  useEffect(() => {
+ useEffect(() => {
     fetchCategory();
   }, []);
 

@@ -10,13 +10,14 @@ import {Home} from './components/Home';
 import {Upload} from './components/Upload';
 import {Admin} from './components/Admin/Admin';
 import {Logout} from './components/Logout';
+import { NavBar } from './components/NavBar/NavBar';
 import axios from 'axios';
 import { ConfirmProvider } from 'material-ui-confirm';
 
 
 function App() {
   const [user,setUser]=useState(true)
-  const [categ,setCateg]=useState([])
+  const [category,setCategory]=useState([])
   const [userName,setUserName]=useState(localStorage.getItem('userName')?localStorage['userName']:'');
   const [userId,setUserId]=useState( localStorage.getItem('userId')?localStorage['userId']:0);
   const [posts,setPosts]=useState([])
@@ -31,20 +32,19 @@ function App() {
   },[user,userName, userId]);
 
   useEffect(() => {
-    fetchCateg()
-  },[])
+    fetchCategory();
+  }, []);
 
-  const fetchCateg = async () => {
-    let url='http://localhost:5000/category'
-    try{
-      const resp=await axios.get(url)
-      console.log(resp.data)
-      setCateg(resp.data)
-
-    }catch(err){
-      console.log(err)
+  const fetchCategory = async () => {
+    let url = "http://localhost:5000/category";
+    try {
+      const resp = await axios.get(url);
+      console.log(resp.data);
+      setCategory(resp.data);
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
 
 
   return (
@@ -52,15 +52,15 @@ function App() {
     <ConfirmProvider>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={ userName ? <Home categ={categ} posts={posts} setPosts={setPosts}/>
+        <Route path="/" element={ userName ? <Home category={category} posts={posts} setPosts={setPosts}/>
              : <Login setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
         <Route path="/forgotten" element={ <Forgotten /> } />
-        <Route path="/register" element={ userName ? <Home categ={categ} posts={posts} setPosts={setPosts}/> : <Register />} />
+        <Route path="/register" element={ userName ? <Home category={category} posts={posts} setPosts={setPosts}/> : <Register />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/upload" element={<Upload categ={categ} />} />
+        <Route path="/upload" element={<Upload category={category} />} />
 
-        <Route path="/admin" element={<Admin setUser={setUser} categ={categ} setUserName={setUserName} setUserId={setUserId} posts={posts} setPosts={setPosts} />} />
-        <Route path="/logout" element={<Logout setUser={setUser} categ={categ} setUserName={setUserName} setUserId={setUserId} posts={posts} setPosts={setPosts}/>} />
+        <Route path="/admin" element={<Admin setUser={setUser} category={category} setUserName={setUserName} setUserId={setUserId} posts={posts} setPosts={setPosts} />} />
+        <Route path="/logout" element={<Logout setUser={setUser} category={category} setUserName={setUserName} setUserId={setUserId} posts={posts} setPosts={setPosts}/>} />
 
       </Routes>
     </BrowserRouter>

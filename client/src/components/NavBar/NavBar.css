@@ -60,7 +60,6 @@
     vertical-align: middle;
 }
 
-
 /*dropdown*/
 
 .dropdown {
@@ -94,9 +93,8 @@
     flex-direction: column;
 }
   
-.dropdown-content a:hover {
+.dropdown-content a:hover{
     color: rgb(130, 88, 88);
-
 }
 
 .dropdown:hover .dropdown-content {
