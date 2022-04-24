@@ -5,12 +5,11 @@ import { Modal } from "react-bootstrap";
 import { Sidebar } from "./Sidebar/Sidebar";
 import { NavBar } from "./NavBar/NavBar";
 import { Terms } from "./Terms";
-import { confirm } from "react-confirm-box";
 
-export const Home = (category, setCategory, selCategory,setSelCategory) => {
-  const [photos, setPhotos] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+export const Home = (category, setCategory, selCategory, setSelCategory) => {
   const [photo, setPhoto] = useState({});
+  const [photos, setPhotos] = useState([]);
+  const [showModal, setShowModal] = useState(false);  
   const [showInfo, setShowInfo] = useState(false);
 
   const handleCloseModal = () => setShowModal(false);
@@ -25,7 +24,9 @@ export const Home = (category, setCategory, selCategory,setSelCategory) => {
   }, [selCategory]);
 
   const fetchPhotos = async () => {
-    let url= selCategory===0? 'http://localhost:5000/photos':'http://localhost:5000/photos/categ/'+selCategory;
+    let url = selCategory == 0 
+      ? 'http://localhost:5000/photos' 
+      : 'http://localhost:5000/photos/categ/' + selCategory;
     try {
       const resp = await axios.get(url);
       console.log(resp.data);
@@ -35,35 +36,21 @@ export const Home = (category, setCategory, selCategory,setSelCategory) => {
     }
   };
 
-
-//confirm box for a delete photo
-const options = {
-  labels: {
-    confirmable: "Yes, I confirm",
-    cancellable: "Cancel"
-  }
-}
-
-const onClickDeletePicture = async () => {
-   const result = await confirm("Are you sure that you want to delete the picture?", options);
-   let url = "http://localhost:5000/:id/:imageId";
-   if (result) {
-     console.log("You click yes!");
+  const deletePicture = async () => {
+    if (window.confirm("Are you sure that you want to delete the picture?") == true) {      
       try {
-        const resp = await axios.delete(url);
+        await axios.delete(`http://localhost:5000/${photo.id}/photo.imageId`);
       } catch (err) {
         console.error(err);
       }
-     return;
-   }
-   console.log("You click No!");
- };
-
+      return;
+    }    
+  };
 
   return (
     <>
       <div className="homeBackground">
-     <NavBar category={category} setCategory={setCategory} selCategory={selCategory} setSelCategory={setSelCategory} />
+        <NavBar category={category} setCategory={setCategory} selCategory={selCategory} setSelCategory={setSelCategory} />
         <div className="container">
           <div className="row justify-content-center">
             <Sidebar />
@@ -74,7 +61,7 @@ const onClickDeletePicture = async () => {
                     key={i}
                     className="homePictures d-flex d-inline-flex p-2"
                     onClick={() => handleShowModal(item)}
-                    whileHover={{opacity: 1}}
+                    whileHover={{ opacity: 1 }}
                   >
                     <img
                       className="homePicture"
@@ -120,7 +107,7 @@ const onClickDeletePicture = async () => {
                   </div>
                   <h4 className="infoImageTitle">Title: {photo.title}</h4>
                   <h5 className="">Description: {photo.description}</h5>
-                  
+
                 </div>
               </div>
             )}
@@ -137,7 +124,7 @@ const onClickDeletePicture = async () => {
                 <button href="LILI" className="col-9 btn btn-success rounded mt-1 mb-1 fs-5 fw-bold text-white">
                   Update
                 </button>
-                <button onClick={onClickDeletePicture} className="col-3 btn btn-danger rounded mt-1 mb-1 fs-5 fw-bold text-white">
+                <button onClick={() => deletePicture()} className="col-3 btn btn-danger rounded mt-1 mb-1 fs-5 fw-bold text-white">
                   Delete
                 </button>
               </div>

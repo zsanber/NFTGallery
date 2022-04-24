@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import { SearchBar } from "../SearchBar/SearchBar";
-import { Logout } from "../Logout";
-import { Admin } from "../Admin/Admin";
 import "./NavBar.css";
 import myLogo from "../Images/myLogo.png";
 import avatar from "../Images/avatar.svg";
-import axios from "axios";
 
-export const NavBar = ({category, setCategory, selCategory, setSelCategory, user, userName, admin }) => {
+export const NavBar = ({ category, setSelCategory, userName }) => {
 
   return (
     <div className="navcontainer">
@@ -42,14 +39,13 @@ export const NavBar = ({category, setCategory, selCategory, setSelCategory, user
               </li>
 
               <li className="dropdown nav-item nav-link">
-                <div class="dropbtn nav-item ">
+                <div className="dropbtn nav-item ">
                   categories
-                  <i class="fa fa-caret-down"></i>
+                  <i className="fa fa-caret-down"></i>
                 </div>
-                <div class="dropdown-content">
+                <div className="dropdown-content">
                   <a onClick={() => setSelCategory(0)}>All</a>
-                  {console.log(category)}
-                  {category.map((item, i) => (
+                  {category.category.map((item, i) => (
                     <a key={i} onClick={() => setSelCategory(item.id)}>
                       {item.name}
                     </a>
@@ -60,7 +56,7 @@ export const NavBar = ({category, setCategory, selCategory, setSelCategory, user
 
             <ul className="navbar-nav rightNav ms-auto">
               <li className="dropdown nav-item nav-link">
-                <div class="dropbtn nav-item">
+                <div className="dropbtn nav-item">
                   <img
                     className="nav-img"
                     src={avatar}
@@ -68,7 +64,7 @@ export const NavBar = ({category, setCategory, selCategory, setSelCategory, user
                     title={userName}
                   />
                 </div>
-                <div class="dropdown-content">
+                <ul className="dropdown-content">
                   {
                     <li className="nav-item">
                       <NavLink to="/logout" href="#">
@@ -84,7 +80,7 @@ export const NavBar = ({category, setCategory, selCategory, setSelCategory, user
                       </NavLink>
                     </li>
                   }
-                </div>
+                </ul>
               </li>
             </ul>
 
