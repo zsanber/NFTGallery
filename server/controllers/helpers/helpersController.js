@@ -112,6 +112,21 @@ const getPhoto=(req,res)=>{ //querie done
         })
     }
 
+//Delete user by admin
+    const deleteUserByAdmin=(req,res)=>{
+        const {id}=req.params;
+        db.query('delete from user where iduser=?',[id],
+        (err, result)=>{
+            if(err){
+                res.send({message:`DELETE failed!-${err}`})
+            }
+            if(result){
+                res.send({message:`Successful DELETE`})
+            }
+        }
+    )
+    }
+
     
 
-module.exports = {createPhoto,updatePhoto,deletePhoto,getPhoto,getPhotos,getPhotosFiltered,getUsersByAdmin}
+module.exports = {createPhoto,updatePhoto,deletePhoto,getPhoto,getPhotos,getPhotosFiltered,getUsersByAdmin, deleteUserByAdmin}
