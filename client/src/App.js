@@ -10,19 +10,18 @@ import {Home} from './components/Home';
 import {Upload} from './components/Upload';
 import {Admin} from './components/Admin/Admin';
 import {Logout} from './components/Logout';
-import { NavBar } from './components/NavBar/NavBar';
 import axios from 'axios';
-import { ConfirmProvider } from 'material-ui-confirm';
 
 
 function App() {
   const [user,setUser]=useState(true)
   const [category,setCategory]=useState([])
-  const [selCategory,setSelCategory]=useState(0)
   const [userName,setUserName]=useState(localStorage.getItem('userName')?localStorage['userName']:'');
   const [userId,setUserId]=useState( localStorage.getItem('userId')?localStorage['userId']:0);
-  const [posts,setPosts]=useState([]) // ?????????? Ez kell  ??????????  //
 
+  useEffect(() => {
+    fetchCategory();
+  }, []);
 
   useEffect(()=> {
     localStorage.setItem('user', user)
@@ -30,10 +29,6 @@ function App() {
     localStorage.setItem('userId', userId)
   },[user,userName, userId]);
 
-  //fetchcategory
-  useEffect(() => {
-    fetchCategory();
-  }, []);
 
   const fetchCategory = async () => {
     let url = "http://localhost:5000/category";
@@ -46,25 +41,23 @@ function App() {
     }
   };
 
-
   return (
     <>
-    <ConfirmProvider>
     <BrowserRouter>
       <Routes>
+      {console.log(category)}
         <Route path="/" element={ userName ? <Home category={category} user={user} userName={userName}/>
              : <Login setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
         <Route path="/forgotten" element={ <Forgotten /> } />
-        <Route path="/register" element={ userName ? <Home category={category} posts={posts} setPosts={setPosts}/> : <Register />} />
+        <Route path="/register" element={ userName ? <Home category={category} /> : <Register />} />
         <Route path="/home" element={<Home />} />
         <Route path="/upload" element={<Upload category={category} />} />
 
-        <Route path="/admin" element={<Admin setUser={setUser} category={category} setUserName={setUserName} setUserId={setUserId} posts={posts} setPosts={setPosts} />} />
-        <Route path="/logout" element={<Logout setUser={setUser} category={category} setUserName={setUserName} setUserId={setUserId} posts={posts} setPosts={setPosts}/>} />
+        <Route path="/admin" element={<Admin setUser={setUser} category={category} setUserName={setUserName} setUserId={setUserId}  />} />
+        <Route path="/logout" element={<Logout setUser={setUser} category={category} setUserName={setUserName} setUserId={setUserId} />} />
 
       </Routes>
     </BrowserRouter>
-    </ConfirmProvider>
     </>
   );
 }

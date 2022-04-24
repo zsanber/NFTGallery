@@ -63,7 +63,7 @@ const onClickDeletePicture = async () => {
   return (
     <>
       <div className="homeBackground">
-{/*      <NavBar category={category} setCategory={setCategory} selCategory={selCategory} setSelCategory={setSelCategory} /> */}
+     <NavBar category={category} setCategory={setCategory} selCategory={selCategory} setSelCategory={setSelCategory} />
         <div className="container">
           <div className="row justify-content-center">
             <Sidebar />

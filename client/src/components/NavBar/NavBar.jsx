@@ -8,7 +8,7 @@ import myLogo from "../Images/myLogo.png";
 import avatar from "../Images/avatar.svg";
 import axios from "axios";
 
-export const NavBar = ({category, setSelCategory, user, userName, admin }) => {
+export const NavBar = ({category, setCategory, selCategory, setSelCategory, user, userName, admin }) => {
 
   return (
     <div className="navcontainer">
@@ -48,6 +48,7 @@ export const NavBar = ({category, setSelCategory, user, userName, admin }) => {
                 </div>
                 <div class="dropdown-content">
                   <a onClick={() => setSelCategory(0)}>All</a>
+                  {console.log(category)}
                   {category.map((item, i) => (
                     <a key={i} onClick={() => setSelCategory(item.id)}>
                       {item.name}
