@@ -56,7 +56,7 @@ const updatePhoto=(req,res) => {
 // Photo delete
 const deletePhoto=(req,res) => {
     const {id,imageId}=req.params;
-    cloudinary.uploader.destroy(imageId)
+    //cloudinary.uploader.destroy(imageId)
     db.query('delete from image where idimage=?',[id],
         (err, result)=>{
             if(err){

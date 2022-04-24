@@ -35,10 +35,12 @@ export const Home = ({ categoryList, setCategory, selectedCategory, setSelectedC
     }
   };
 
-  const deletePicture = async () => {
+  const deletePicture = async (photo) => {
     if (window.confirm("Are you sure that you want to delete the picture?") == true) {      
       try {
-        await axios.delete(`http://localhost:5000/${photo.id}/photo.imageId`);
+        await axios.delete(`http://localhost:5000/photos/${photo.idimage}/${photo.ImageId}`);
+        await fetchPhotos(selectedCategory);
+        setShowModal(false);
       } catch (err) {
         console.error(err);
       }
@@ -123,7 +125,7 @@ export const Home = ({ categoryList, setCategory, selectedCategory, setSelectedC
                 <button href="LILI" className="col-9 btn btn-success rounded mt-1 mb-1 fs-5 fw-bold text-white">
                   Update
                 </button>
-                <button onClick={() => deletePicture()} className="col-3 btn btn-danger rounded mt-1 mb-1 fs-5 fw-bold text-white">
+                <button onClick={() => deletePicture(photo)} className="col-3 btn btn-danger rounded mt-1 mb-1 fs-5 fw-bold text-white">
                   Delete
                 </button>
               </div>
