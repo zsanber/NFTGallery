@@ -1,5 +1,6 @@
 import React,{useState, useContext} from 'react'
 import {useForm} from 'react-hook-form';
+import {NavLink} from 'react-router-dom';
 import axios from 'axios';
 import { validateImage } from "image-validator";
 import { Terms } from "./Terms";
@@ -46,9 +47,9 @@ console.log('Filesize:',selFile.length>0 ? selFile[0].sizeReadable : 0)
 
   return (
     <div className="homeBackground">
-      <div className="container py-5">
+      <div className="container py-3">
+      <NavLink to="/home" className="nav-link" aria-current="page" href="#">◀</NavLink>
         <div className="row justify-content-center mx-auto w-75 homeBox col-12 col-md-8 mt-5 order-1" >
-
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="d-flex align-items-center justify-content-between py-3 ">
 
@@ -84,8 +85,8 @@ console.log('Filesize:',selFile.length>0 ? selFile[0].sizeReadable : 0)
         </div>
       </div>
       <div className="col-12 d-flex flex-column justify-content-end align-items-end fw-bold">
-              <Terms />
-          </div>
+        <Terms />
+      </div>
     </div>
   )
 }
