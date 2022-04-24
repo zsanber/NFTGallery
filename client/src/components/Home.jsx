@@ -6,14 +6,12 @@ import { Sidebar } from "./Sidebar/Sidebar";
 import { NavBar } from "./NavBar/NavBar";
 import { Terms } from "./Terms";
 import { confirm } from "react-confirm-box";
-import { useNavigate } from 'react-router-dom'
 
-export const Home = () => {
+export const Home = (category, setCategory, selCategory,setSelCategory) => {
   const [photos, setPhotos] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [photo, setPhoto] = useState({});
   const [showInfo, setShowInfo] = useState(false);
-  const navigate = useNavigate()
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = (item) => {
@@ -23,11 +21,11 @@ export const Home = () => {
   };
 
   useEffect(() => {
-    fetchImages();
-  }, []);
+    fetchPhotos();
+  }, [selCategory]);
 
-  const fetchImages = async () => {
-    let url = "http://localhost:5000/photos/";
+  const fetchPhotos = async () => {
+    let url= selCategory===0? 'http://localhost:5000/photos':'http://localhost:5000/photos/categ/'+selCategory;
     try {
       const resp = await axios.get(url);
       console.log(resp.data);
@@ -36,6 +34,7 @@ export const Home = () => {
       console.error(err);
     }
   };
+
 
 //confirm box for a delete photo
 const options = {
@@ -47,7 +46,7 @@ const options = {
 
 const onClickDeletePicture = async () => {
    const result = await confirm("Are you sure that you want to delete the picture?", options);
-   let url = "http://localhost:5000//:id/:imageId";
+   let url = "http://localhost:5000/:id/:imageId";
    if (result) {
      console.log("You click yes!");
       try {
@@ -64,7 +63,7 @@ const onClickDeletePicture = async () => {
   return (
     <>
       <div className="homeBackground">
-        <NavBar />
+{/*      <NavBar category={category} setCategory={setCategory} selCategory={selCategory} setSelCategory={setSelCategory} /> */}
         <div className="container">
           <div className="row justify-content-center">
             <Sidebar />
@@ -135,7 +134,7 @@ const onClickDeletePicture = async () => {
                 </button>
               </div>
               <div className="row justify-content-center">
-                <button onClick={() => navigate('/edit/' + photo.id)} className="col-9 btn btn-success rounded mt-1 mb-1 fs-5 fw-bold text-white">
+                <button href="LILI" className="col-9 btn btn-success rounded mt-1 mb-1 fs-5 fw-bold text-white">
                   Update
                 </button>
                 <button onClick={onClickDeletePicture} className="col-3 btn btn-danger rounded mt-1 mb-1 fs-5 fw-bold text-white">

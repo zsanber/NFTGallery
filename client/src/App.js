@@ -18,19 +18,19 @@ import { ConfirmProvider } from 'material-ui-confirm';
 function App() {
   const [user,setUser]=useState(true)
   const [category,setCategory]=useState([])
+  const [selCategory,setSelCategory]=useState(0)
   const [userName,setUserName]=useState(localStorage.getItem('userName')?localStorage['userName']:'');
   const [userId,setUserId]=useState( localStorage.getItem('userId')?localStorage['userId']:0);
-  const [posts,setPosts]=useState([])
+  const [posts,setPosts]=useState([]) // ?????????? Ez kell  ??????????  //
 
 
   useEffect(()=> {
-
     localStorage.setItem('user', user)
     localStorage.setItem('userName', userName)
     localStorage.setItem('userId', userId)
-
   },[user,userName, userId]);
 
+  //fetchcategory
   useEffect(() => {
     fetchCategory();
   }, []);
@@ -52,7 +52,7 @@ function App() {
     <ConfirmProvider>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={ userName ? <Home category={category} posts={posts} setPosts={setPosts}/>
+        <Route path="/" element={ userName ? <Home category={category} user={user} userName={userName}/>
              : <Login setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
         <Route path="/forgotten" element={ <Forgotten /> } />
         <Route path="/register" element={ userName ? <Home category={category} posts={posts} setPosts={setPosts}/> : <Register />} />

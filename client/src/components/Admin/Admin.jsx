@@ -1,31 +1,40 @@
 import React, { useEffect, useState, useReducer } from "react";
 import { Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { NavBar } from "../NavBar/NavBar";
+import { Terms } from "../Terms";
 import axios from "axios";
 import "./Admin.css";
 import "../../App.css";
-import { NavBar } from "../NavBar/NavBar";
-import { Terms } from "../Terms";
 
 export const Admin = () => {
-const [stat,setStat]=useState([])
+const [list,setList]=useState([])
 
 useEffect(()=> {
-    fetchStat()
+    fetchList()
 },[])
 
-const fetchStat=async ()=>{
+const fetchList=async ()=>{
     try {
     const resp=await axios.get('http://localhost:5000/photos/admin')
-    setStat(resp.data)
+    setList(resp.data)
     }catch(err){
     console.log(err)
     }
 }
 
+const handleDelete= async (item)=>{
+  if (window.confirm(`Biztosan ki szeretnéd törölni a ${item.name} nevű usert?`) == true) {
+    const resp = await axios.delete(`http://localhost:5000/photos/admin/${item.iduser}`);
+    fetchList();
+  } else {
+    console.log('Nincs törlés!')
+  }
+}
+
   return (
     <div className="homeBackground">
-      <NavBar />
+    
       <div className="container">
         <div className="row justify-content-center">
           <div className="adminBox col-12 mt-5">
@@ -44,14 +53,14 @@ const fetchStat=async ()=>{
                         </tr>
                         </thead>
                         <tbody>
-                        {stat.map((item, index) => <tr key={index}>
+                        {list.map((item, index) => <tr key={index}>
                         <td className="align-middle">{item.iduser}</td>
                         <td className="align-middle">{item.username}</td>
                         <td className="align-middle">{item.email}</td>
                         <td className="align-middle">{item.created_at}</td>
                         <td className="align-middle">{item.updated_at}</td>
                         <td className="align-middle">{item.role}</td>
-                        <td className="text-align-center align-middle text-light bg-danger">Delete user 🗑️</td>
+                        <td onClick={()=>handleDelete(item)} className="text-align-center align-middle text-light bg-danger">Delete user 🗑️</td>
                         </tr>)}
                         </tbody>
                 </table>

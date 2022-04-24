@@ -8,23 +8,7 @@ import myLogo from "../Images/myLogo.png";
 import avatar from "../Images/avatar.svg";
 import axios from "axios";
 
-export const NavBar = ({user, userName, admin }) => {
-  const [category, setCategory] = useState([]);
-
- useEffect(() => {
-    fetchCategory();
-  }, []);
-
-  const fetchCategory = async () => {
-    let url = "http://localhost:5000/category";
-    try {
-      const resp = await axios.get(url);
-      console.log(resp.data);
-      setCategory(resp.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+export const NavBar = ({category, setSelCategory, user, userName, admin }) => {
 
   return (
     <div className="navcontainer">
@@ -63,9 +47,9 @@ export const NavBar = ({user, userName, admin }) => {
                   <i class="fa fa-caret-down"></i>
                 </div>
                 <div class="dropdown-content">
-                  <a onClick={() => setCategory(0)}>All</a>
+                  <a onClick={() => setSelCategory(0)}>All</a>
                   {category.map((item, i) => (
-                    <a key={i} onClick={() => setCategory(item.id)}>
+                    <a key={i} onClick={() => setSelCategory(item.id)}>
                       {item.name}
                     </a>
                   ))}
