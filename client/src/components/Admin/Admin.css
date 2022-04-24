@@ -29,3 +29,7 @@
 .table{
     overflow-y: scroll;
 }
+
+.deleteUser {
+    cursor: pointer !important;
+}
