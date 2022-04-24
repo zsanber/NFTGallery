@@ -122,9 +122,9 @@ export const Home = ({ categoryList, setCategory, selectedCategory, setSelectedC
                 </button>
               </div>
               <div className="row justify-content-center">
-                <button href="LILI" className="col-9 btn btn-success rounded mt-1 mb-1 fs-5 fw-bold text-white">
+                <a href={'/edit/' + photo.idimage} className="col-9 btn btn-success rounded mt-1 mb-1 fs-5 fw-bold text-white">
                   Update
-                </button>
+                </a>
                 <button onClick={() => deletePicture(photo)} className="col-3 btn btn-danger rounded mt-1 mb-1 fs-5 fw-bold text-white">
                   Delete
                 </button>
