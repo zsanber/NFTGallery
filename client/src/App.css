@@ -48,16 +48,16 @@
     height: 100%;
     object-fit: cover;
     margin:0;
+    padding-top: 10px;
 }
 
 .homeBox {
-    opacity: 0.7;
     background: white;
     transition: 0.25s;
     border-radius: 30px;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.317); 
-    padding: 15px;  
-    height: 78vh;
+    padding: 10px;  
+    height: 80vh;
     display: flex;
     flex-wrap: wrap;
     /*z-index: 1;*/
@@ -81,7 +81,7 @@
     justify-content: center;
     display: flex;
     flex-direction: column;
-    width: 180px;
+    width: 200px;
     height: 250px;
     cursor: pointer;
     margin:4px;

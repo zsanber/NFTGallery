@@ -8,7 +8,7 @@ import avatar from "../Images/avatar.svg";
 export const NavBar = ({ categoryList, selectedCategory, setSelectedCategory, userName }) => {
   return (
     <div className="navcontainer">
-      <nav className="navbar navbar-expand-lg navbar-dark shadow-5-strong">
+      <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -22,7 +22,7 @@ export const NavBar = ({ categoryList, selectedCategory, setSelectedCategory, us
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <NavLink to="/home" href="#">
+            <NavLink to="/" href="#">
               <img className="nav-myLogo" src={myLogo} alt="logo" />
             </NavLink>
             <ul className="navbar-nav leftNav mx-auto">

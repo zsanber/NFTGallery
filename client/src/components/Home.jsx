@@ -56,7 +56,7 @@ export const Home = ({ categoryList, setCategory, selectedCategory, setSelectedC
         <div className="container">
           <div className="row justify-content-center">
             <Sidebar />
-            <div className="homeBox col-12 col-md-8 mt-5 order-1">
+            <div className="homeBox col-12 col-lg-8 col-md-8 col-sm-12 mt-5 mb-4 ">
               <div className="homeBoxContent">
                 {photos.map((item, i) => (
                   <div

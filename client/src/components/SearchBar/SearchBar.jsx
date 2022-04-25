@@ -24,7 +24,7 @@ export const SearchBar=({placeholder,posts})=> {
     }
   return (
     <div>
-        <div className="d-flex justify-content-between border rounded">
+        <div className="searchbar d-flex justify-content-between border rounded">
             <input  className="input p-1" type="text" value={wordEntered} onChange={handleFilter}/>
             {wordEntered===""? <i className="fa-solid fa-magnifying-glass"></i>:
                 <i className="fa-solid fa-x" onClick={handleClear}></i>}
