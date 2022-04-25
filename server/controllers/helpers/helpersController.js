@@ -38,11 +38,11 @@ const createPhoto= async (req,res)=>{
 const updatePhoto=(req,res) => {
     const {id}=req.params;
     console.log('put:',req.body)
-    const {title,categ_id,story}=req.body
+    const {title,categ_idcategorie,description}=req.body
     let actDate=new Date()
     actDate=actDate.toISOString().split('T')[0] + ' ' + actDate.toTimeString().split(' ')[0];
     db.query('update posts set title=? , categorie_idcategorie=? , description=? , updated_at=? where id=?',
-        [title,categ_id,story,actDate,id],
+        [title,categ_idcategorie,description,actDate,id],
         (err, result)=>{
             if(err){
                 res.send({message:`Failed to change data!-${err}`})
