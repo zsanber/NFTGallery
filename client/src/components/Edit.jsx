@@ -44,8 +44,8 @@ export const Edit = ({ userId, categoryList }) => {
 	return (
 		<div className="homeBackground">
 			<div className="container py-3">
-				<NavLink to="/home" className="nav-link" aria-current="page" href="#">◀</NavLink>
-				<div className="row justify-content-center mx-auto w-75 homeBox col-12 col-md-8 mt-5 order-1" >
+				<NavLink to="/" className="nav-link" aria-current="page" href="#">◀</NavLink>
+				<div className="row justify-content-center mx-auto w-75 homeBox col-12 col-md-8 my-4 order-1" >
 					{photo.image && <img src={photo.image} alt="hegy" className="  border p-0 rounded-3" />}
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<div className="d-flex align-items-center">
@@ -74,7 +74,7 @@ export const Edit = ({ userId, categoryList }) => {
 					</form>
 				</div>
 			</div>
-			<div className="col-12 d-flex flex-column justify-content-end align-items-end fw-bold">
+			<div className="col-12 d-flex flex-column justify-content-end align-items-end fw-bold mb-1">
 				<Terms />
 			</div>
 		</div>

@@ -38,7 +38,7 @@ export const Register=()=> {
 
     const checkUsername=(e)=>{
         if(e.target.value.length>0){
-          const url='/auth/checkUsername'
+          const url='/authRoute/checkUsername'
           sendUsername(url,{"username": e.target.value})
         }
       }
@@ -49,7 +49,7 @@ export const Register=()=> {
       }
     const checkEmail=(e)=>{
         if(e.target.value.length>0){
-          const url='/auth/checkEmail'
+          const url='/authRoute/checkEmail'
           sendEmail(url,{"email": e.target.value})
         }
       }
