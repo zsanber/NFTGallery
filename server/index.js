@@ -6,7 +6,7 @@ const morgan=require('morgan')
 
 const photos=require('./routes/helpers/helpersRoute')
 const category=require('./routes/helpers/categoryRoute')
-const auth=require('./routes/auth/authRoute')
+const authRoute=require('./routes/auth/authRoute')
 
 
 const app=express()
@@ -23,7 +23,7 @@ app.use(morgan('dev'))
 app.use('/photos',photos)
 app.use('/category',category)
 //console.log('process...: ',process.env)
-app.use('/auth',auth)
+app.use('/authRoute',authRoute)
 
 const port=process.env.PORT ||5000
 

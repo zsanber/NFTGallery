@@ -18,6 +18,13 @@ export const Upload=({userId,categoryList})=> {
         verify(data,selFile[0])
   } 
 
+  /*const onSubmit = (data) => {
+    console.log("kliens oldal: ", data);
+    let url = '/posts'
+    sendData(url, data)
+    reset()
+  }*/
+
   const verify=async (data,file)=>{
     console.log('verify:',file)
     const isValidImage = await validateImage(file);

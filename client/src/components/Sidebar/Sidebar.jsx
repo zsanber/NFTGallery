@@ -5,7 +5,7 @@ import "./Sidebar.css"
 
 export const Sidebar = ({userName}) => {
   return (
-    <div className="homeBoxSideBar col-lg-3 col-sm-12 col-md-3 mt-5 mb-5 ml-20 order-2 justify-content-center align-items-center">
+    <div className="homeBoxSideBar col-lg-3 col-sm-12 col-md-3 mt-5 mb-4 ml-20 order-2 justify-content-center align-items-center">
       <div className="sidebar rounded d-flex flex-column align-items-center">
         <img className="" src={myLogo} alt="AVATAR" />
         <span className="welcome fw-bold border-top border-bottom ">

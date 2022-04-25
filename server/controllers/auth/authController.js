@@ -19,15 +19,19 @@ const checkEmail=(req,res)=>{ //querie done
     })
 }
 
-const checkUsername=(req,res)=>{ //querie done
-    console.log('post....',req.body)
+const checkUsername=(req,res)=>{
+
+    console.log('post*************************',req.body)
+
     const {username} = req.body
+
     db.query('select count(*) nr from user where username=?',[username],(err,result) => {
-        if (err)
-        console.log('Felhasználó hiba: ', err)
-        else
+
         res.send(result)
+
     })
+
+
 
 }
 
@@ -54,7 +58,7 @@ const login=(req,res)=>{ //querie done
 }
 
 const register=(req,res)=>{
-    console.log('post....',req.body)
+    console.log('posttegister....',req.body)
     const {username,email,password}=req.body
     bcrypt.hash(password,saltRounds,(err,hashedPw)=>{
         if(err) console.log(err)

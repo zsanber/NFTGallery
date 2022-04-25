@@ -67,7 +67,7 @@ export const Register=()=> {
                   <div className="box">
                       <form onSubmit={handleSubmit(onSubmit)}>
                           <h3 className="text-secondary fw-bold mb-3">Not a member yet?</h3>
-                          <input {...register('userName', { required: true, maxLength: 20 })}
+                          <input {...register('username', { required: true, maxLength: 20 })}
                               className="form-control rounded mt-4 border border-info rounded p-2" placeholder="Username" onBlur={(e) => checkUsername(e)} />
                           {errors.userName && <p className="err text-danger small">Username is required</p>}
                           <input {...register('email', { required: true })} className="form-control rounded mt-3 border border-info rounded p-2" placeholder="Email address"
