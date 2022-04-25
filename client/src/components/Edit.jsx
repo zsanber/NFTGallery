@@ -43,7 +43,7 @@ export const Edit = ({ userId, categoryList }) => {
 
 	return (
 		<div className="homeBackground">
-			<div className="container py-3">
+			<div className="container py-2">
 				<NavLink to="/" className="nav-link" aria-current="page" href="#">◀</NavLink>
 				<div className="row justify-content-center mx-auto w-75 homeBox col-12 col-md-8 my-4 order-1" >
 					{photo.image && <img src={photo.image} alt="hegy" className="  border p-0 rounded-3" />}
@@ -68,14 +68,14 @@ export const Edit = ({ userId, categoryList }) => {
 							</div>
 							<div className={successful ? "col-md-6 text-success" : "col-md-6 text-danger"}>{msg}</div>
 						</div>
-						<textarea name="" id="story" cols="30" rows="10" className="form-control" defaultValue={photo.description}
+						<textarea name="" id="story" cols="30" rows="10" className="form-control m-2" defaultValue={photo.description}
 							{...register("story", { required: true })} placeholder="Edit your story..." ></textarea>
 						<div className="err">{errors.story && <span>Your story is missing...</span>}</div>
 					</form>
 				</div>
-			</div>
-			<div className="col-12 d-flex flex-column justify-content-end align-items-end fw-bold mb-1">
-				<Terms />
+				<div className="col-12 d-flex flex-column justify-content-end align-items-end fw-bold mb-1">
+					<Terms />
+				</div>
 			</div>
 		</div>
 	)
