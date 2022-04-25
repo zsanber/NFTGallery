@@ -10,13 +10,14 @@ import { Home } from './components/Home';
 import { Upload } from './components/Upload';
 import { Admin } from './components/Admin/Admin';
 import { Logout } from './components/Logout';
+import { Edit } from './components/Edit';
 import axios from 'axios';
 import {  useNavigate } from 'react-router-dom';
 
 function App() {
   const [user, setUser] = useState(true)
   const [categoryList, setCategoryList] = useState([])
-  const [selectedCategory, setSelectedCategory] = useState({})
+  const [selectedCategory, setSelectedCategory] = useState(0)
   const [userName, setUserName] = useState(localStorage.getItem('userName') ? localStorage['userName'] : '');
   const [userId, setUserId] = useState(localStorage.getItem('userId') ? localStorage['userId'] : 0);
 
@@ -48,10 +49,12 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home category={categoryList} selectedCategory={selectedCategory} />} />
+          <Route path="/" element={<Home categoryList={categoryList} selectedCategory={selectedCategory} 
+                                         setSelectedCategory={setSelectedCategory} userName={userName} />} />
           <Route path="/forgotten" element={<Forgotten />} />                    
 
-          <Route path="/upload" element={<Upload category={categoryList} />} />
+          <Route path="/edit/:id" element={<Edit categoryList={categoryList} />} />
+          <Route path="/upload" element={<Upload categoryList={categoryList} />} />
           <Route path="/admin" element={<Admin setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
 
           <Route path="/login" element={<Login setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />

@@ -6,7 +6,7 @@ import { Sidebar } from "./Sidebar/Sidebar";
 import { NavBar } from "./NavBar/NavBar";
 import { Terms } from "./Terms";
 
-export const Home = (category, setCategory, selCategory, setSelCategory) => {
+export const Home = ({ categoryList, setCategory, selectedCategory, setSelectedCategory, userName }) => {
   const [photo, setPhoto] = useState({});
   const [photos, setPhotos] = useState([]);
   const [showModal, setShowModal] = useState(false);  
@@ -20,26 +20,27 @@ export const Home = (category, setCategory, selCategory, setSelCategory) => {
   };
 
   useEffect(() => {
-    fetchPhotos();
-  }, [selCategory]);
+    fetchPhotos(selectedCategory);    
+  }, [selectedCategory]);
 
-  const fetchPhotos = async () => {
-    let url = selCategory == 0 
+  const fetchPhotos = async (selectedCategory) => {
+    let url = selectedCategory == 0 
       ? 'http://localhost:5000/photos' 
-      : 'http://localhost:5000/photos/categ/' + selCategory;
+      : 'http://localhost:5000/photos/categ/' + selectedCategory;
     try {
       const resp = await axios.get(url);
-      console.log(resp.data);
       setPhotos(resp.data);
     } catch (err) {
       console.error(err);
     }
   };
 
-  const deletePicture = async () => {
+  const deletePicture = async (photo) => {
     if (window.confirm("Are you sure that you want to delete the picture?") == true) {      
       try {
-        await axios.delete(`http://localhost:5000/${photo.id}/photo.imageId`);
+        await axios.delete(`http://localhost:5000/photos/${photo.idimage}/${photo.ImageId}`);
+        await fetchPhotos(selectedCategory);
+        setShowModal(false);
       } catch (err) {
         console.error(err);
       }
@@ -50,7 +51,8 @@ export const Home = (category, setCategory, selCategory, setSelCategory) => {
   return (
     <>
       <div className="homeBackground">
-        <NavBar category={category} setCategory={setCategory} selCategory={selCategory} setSelCategory={setSelCategory} />
+        <NavBar categoryList={categoryList} setCategory={setCategory} 
+                selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} userName={userName} />
         <div className="container">
           <div className="row justify-content-center">
             <Sidebar />
@@ -61,7 +63,6 @@ export const Home = (category, setCategory, selCategory, setSelCategory) => {
                     key={i}
                     className="homePictures d-flex d-inline-flex p-2"
                     onClick={() => handleShowModal(item)}
-                    whileHover={{ opacity: 1 }}
                   >
                     <img
                       className="homePicture"
@@ -121,10 +122,10 @@ export const Home = (category, setCategory, selCategory, setSelCategory) => {
                 </button>
               </div>
               <div className="row justify-content-center">
-                <button href="LILI" className="col-9 btn btn-success rounded mt-1 mb-1 fs-5 fw-bold text-white">
+                <a href={'/edit/' + photo.idimage} className="col-9 btn btn-success rounded mt-1 mb-1 fs-5 fw-bold text-white">
                   Update
-                </button>
-                <button onClick={() => deletePicture()} className="col-3 btn btn-danger rounded mt-1 mb-1 fs-5 fw-bold text-white">
+                </a>
+                <button onClick={() => deletePicture(photo)} className="col-3 btn btn-danger rounded mt-1 mb-1 fs-5 fw-bold text-white">
                   Delete
                 </button>
               </div>

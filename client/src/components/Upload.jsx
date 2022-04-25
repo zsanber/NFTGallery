@@ -6,7 +6,7 @@ import { validateImage } from "image-validator";
 import { Terms } from "./Terms";
 
 
-export const Upload=({userId,category})=> {
+export const Upload=({userId,categoryList})=> {
   const {register, handleSubmit,formState: { errors },reset} = useForm();
   const [photoCateg,setPhotoCateg]=useState(0)
   const [successful,setSuccessFul]=useState(false)
@@ -70,7 +70,7 @@ console.log('Filesize:',selFile.length>0 ? selFile[0].sizeReadable : 0)
               <div className="col-md-6">
                <select  className="form-select mb-4" {...register("categ_id")} onChange={(e)=>setPhotoCateg(e.target.value)}>
               <option value="0">Choose a category...</option>
-              {category.map(obj=>(
+              {categoryList.map(obj=>(
                   <option value={obj.id} key={obj.id}>{obj.name}</option>
               ))}
 

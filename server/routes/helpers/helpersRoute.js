@@ -11,6 +11,4 @@ router.route('/admin/:id').delete(deleteUserByAdmin)
 router.route('/').post(createPhoto)
 router.route('/:id/:imageId').delete(deletePhoto)
 
-
-
 module.exports=router

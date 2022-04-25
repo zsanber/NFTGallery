@@ -5,8 +5,7 @@ import "./NavBar.css";
 import myLogo from "../Images/myLogo.png";
 import avatar from "../Images/avatar.svg";
 
-export const NavBar = ({ category, setSelCategory, userName }) => {
-
+export const NavBar = ({ categoryList, selectedCategory, setSelectedCategory, userName }) => {
   return (
     <div className="navcontainer">
       <nav className="navbar navbar-expand-lg navbar-dark shadow-5-strong">
@@ -44,9 +43,9 @@ export const NavBar = ({ category, setSelCategory, userName }) => {
                   <i className="fa fa-caret-down"></i>
                 </div>
                 <div className="dropdown-content">
-                  <a onClick={() => setSelCategory(0)}>All</a>
-                  {category.category.map((item, i) => (
-                    <a key={i} onClick={() => setSelCategory(item.id)}>
+                  <a onClick={() => setSelectedCategory(0)}  role="button" >All</a>
+                  {categoryList.map((item, i) => (
+                    <a key={i} onClick={() => setSelectedCategory(item.idcategorie)}  role="button" >
                       {item.name}
                     </a>
                   ))}

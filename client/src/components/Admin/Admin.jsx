@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useReducer } from "react";
-import { Modal } from "react-bootstrap";
-import { useForm } from "react-hook-form";
 import { NavBar } from "../NavBar/NavBar";
-import { Terms } from "../Terms";
+import {NavLink} from 'react-router-dom';
 import axios from "axios";
 import "./Admin.css";
 import "../../App.css";
@@ -34,8 +32,8 @@ const handleDelete= async (item)=>{
 
   return (
     <div className="homeBackground">
-    
       <div className="container">
+      <NavLink to="/" className="nav-link" aria-current="page" href="#">◀</NavLink>
         <div className="row justify-content-center">
           <div className="adminBox col-12 mt-5">
             <div className="adminContent">
@@ -60,11 +58,10 @@ const handleDelete= async (item)=>{
                         <td className="align-middle">{item.created_at}</td>
                         <td className="align-middle">{item.updated_at}</td>
                         <td className="align-middle">{item.role}</td>
-                        <td onClick={()=>handleDelete(item)} className="text-align-center align-middle text-light bg-danger">Delete user 🗑️</td>
+                        <td onClick={()=>handleDelete(item)} className="deleteUser text-align-center align-middle text-light bg-danger">Delete user 🗑️</td>
                         </tr>)}
                         </tbody>
                 </table>
-
             </div>
           </div>
         </div>
