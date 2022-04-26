@@ -1,45 +1,43 @@
-import React,{useState, useContext} from 'react'
+import React,{useState} from 'react'
 import {useForm} from 'react-hook-form';
 import {NavLink} from 'react-router-dom';
 import axios from 'axios';
 import { validateImage } from "image-validator";
 import { Terms } from "./Terms";
+//import FileDrop from './FileDrop'
 
 
 export const Upload=({userId,categoryList})=> {
+  console.log('klien.',userId)
 	const { register, handleSubmit, formState: { errors } } = useForm();
   const [photoCategory,setPhotoCategory]=useState(0)
   const [successful,setSuccessFul]=useState(false)
   const [msg,setMsg] =useState('')
-  const [selFile,setSelFile] = useState({})
 
-  const onSubmit = (data) =>{
-    if(selFile.length>0)
-        verify(data,selFile[0])
-  } 
 
-  /*const onSubmit = (data) => {
+  const onSubmit = (data) => {
     console.log("kliens oldal: ", data);
-    let url = '/posts'
-    sendData(url, data)
-    reset()
-  }*/
+    //let url = '/photos'
+    verify(data)
+    //sendData(url, data)
+    //reset()
+  }
 
-  const verify=async (data,file)=>{
-    console.log('verify:',file)
-    const isValidImage = await validateImage(file);
+  const verify=async (data)=>{
+    console.log('verify:')
+    const isValidImage = await validateImage(data.image[0]);
     isValidImage && sendData('/photos',data)//amikor megvan a válasz csak akkor menjen a kérés a szerverre
   }
   
   const sendData=async (url, data) =>{
     const formData=new FormData()
-    formData.append('image',selFile[0])
+    formData.append('image',data.image[0])
     formData.append('title',data.title)
-    formData.append('user_id',data.user_id)
+    formData.append('user_id',userId)
     formData.append('categ_id',data.categ_id)
     formData.append('story',data.story)
     try {
-      const resp=await axios.photos(url,formData)
+      const resp=await axios.post(url,formData)
       const data=await resp.data
       console.log(data)
       setMsg(data.message)
@@ -49,8 +47,8 @@ export const Upload=({userId,categoryList})=> {
       setMsg(`'Error while uploading' : ${e.message}`)
     }
   }
-console.log('selFile=',selFile)
-console.log('Filesize:',selFile.length>0 ? selFile[0].sizeReadable : 0)
+/*console.log('selFile=',selFile)
+console.log('Filesize:',selFile.length>0 ? selFile[0].sizeReadable : 0)*/
 
   return (
     <div className="homeBackground">
@@ -72,20 +70,20 @@ console.log('Filesize:',selFile.length>0 ? selFile[0].sizeReadable : 0)
               <input type="text" className="form-control m-2 photoTitle" placeholder="Title"
                 {...register("title", { required: true })} />
               <div className="err">{errors.title && <span>Title required</span>}</div>
-
               <input type="text"  {...register("user_id")} hidden value={userId} />
-
               <input disabled={photoCategory === 0} type="submit" className="btn btn-primary m-2" value="Upload" />
             </div>
             <div className="row">
               <div className="col-md-6">
-               <select  className="form-select mb-4" {...register("categ_id")} onChange={(e)=>setPhotoCategory(e.target.value)}>
-              <option value="0">Choose a category...</option>
-              {categoryList.map(obj=>(
-                  <option key={obj.idcategorie} value={obj.idcategorie}>{obj.name}</option>
-              ))}
-
-            </select>
+               <select  className="form-select mb-4" {...register("categ_id", { required: true })} 
+               onChange={(event)=>setPhotoCategory(event.target.value)}
+                value={photoCategory} >
+									{categoryList.map(obj => (
+										<option key={obj.idcategorie} value={obj.idcategorie} >
+											{obj.name}
+										</option>
+									))}
+								</select>
               </div>
               <div className={successful ? "col-md-6 text-success" : "col-md-6 text-danger"}>{msg}</div>
             </div>

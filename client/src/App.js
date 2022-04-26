@@ -54,7 +54,7 @@ function App() {
           <Route path="/forgotten" element={<Forgotten />} />                    
 
           <Route path="/edit/:id" element={<Edit categoryList={categoryList} />} />
-          <Route path="/upload" element={<Upload categoryList={categoryList} />} />
+          <Route path="/upload" element={<Upload categoryList={categoryList} userId={userId} />} />
           <Route path="/admin" element={<Admin setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
 
           <Route path="/login" element={<Login setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />

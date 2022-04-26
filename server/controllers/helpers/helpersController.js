@@ -1,6 +1,7 @@
 const mysql =require('mysql');
 const configDb=require('../../configDb')
 const db=mysql.createConnection(configDb)
+const {upload}=require('../../cloudinary')
 
 
 // Photo upload
@@ -19,7 +20,7 @@ const createPhoto= async (req,res)=>{
     let actDate=new Date()
     actDate=actDate.toISOString().split('T')[0] + ' ' + actDate.toTimeString().split(' ')[0];
     console.log(actDate)
-    db.query('insert into image (user_iduser,title,categ_idcategorie,description,link,created_at,image_id) values (?,?,?,?,?,?,?)',
+    db.query('insert into image (user_iduser,title,categorie_idcategorie,description,link,created_at,idimage) values (?,?,?,?,?,?,?)',
         [user_id,title,categ_id,story,cloudFile.url,actDate,cloudFile.public_id],
         (err,result)=>{
             if(err){
