@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "startDev": "nodemon index.js"
+    "startDev": "nodemon index.js",
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^9.2.2",
     "nodemon": "^2.0.15"
   },
   "dependencies": {
