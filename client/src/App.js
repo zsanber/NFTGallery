@@ -44,7 +44,7 @@ function App() {
       console.log(err);
     }
   };
-
+  console.log('Appban vagyunk: ' , userId)
   return (
     <>
       <BrowserRouter>
@@ -57,7 +57,8 @@ function App() {
           <Route path="/upload" element={<Upload categoryList={categoryList} userId={userId} />} />
           <Route path="/admin" element={<Admin setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
 
-          <Route path="/login" element={<Login setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
+          <Route path="/login" element={userId !=0 ? <Home categoryList={categoryList} selectedCategory={selectedCategory} 
+                                         setSelectedCategory={setSelectedCategory} userName={userName} /> : <Login setUser={setUser} setUserName={setUserName} setUserId={setUserId} />  } />
           <Route path="/logout" element={<Logout setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
           <Route path="/register" element={<Register />} />
         </Routes>

@@ -8,6 +8,8 @@ const bcrypt = require("bcryptjs");
 
 const saltRounds = 10;
 
+
+
 const checkEmail = (req, res) => {
     //querie done
     console.log("post....", req.body);
@@ -36,7 +38,6 @@ const checkUsername = (req, res) => {
 };
 
 const login = (req, res) => {
-    //querie done
     console.log("post....", req.body);
     const { email, password } = req.body;
     db.query(
@@ -45,21 +46,26 @@ const login = (req, res) => {
         (err, result) => {
             if (err) res.send({ message: err });
             if (result.length == 1) {
+                
                 bcrypt.compare(
                     password,
                     result[0].password,
                     (error, resultCompare) => {
+                        if (error) 
+                        console.log(error)
                         if (resultCompare)
-                            if (result[0].status == "active")
+                            if (result[0].status == "active"){
+                                console.log(result[0])
                                 res.send({
                                     message: "sikeres bejelentkezés!",
                                     username: result[0].username,
-                                    userId: result[0].id,
+                                    userId: result[0].iduser,
+                                
                                 });
-                            else
+                            }else
                                 res.status(401).send({
                                     message:
-                                        "Az email üzeneteid között megtalálod az aktiváló linket!",
+                                        "Szükséges a fiok aktiválása! emailben el lett küldve az aktiválási link!",
                                 });
                         else
                             res.status(401).send({
@@ -88,7 +94,7 @@ const register = (req, res) => {
         //querie done
         db.query(
             "INSERT INTO user (username,email,password,created_at,status,confirmationCode) VALUES (?,?,?,?,?,?)",
-            [username, email, hashedPw, regDateStr, "pending", "user", token],
+            [username, email, hashedPw, regDateStr, "pending", token],
             (err, result) => {
                 if (err) {
                     console.log("insert error:", err);
@@ -97,7 +103,7 @@ const register = (req, res) => {
                 if (result) {
                     console.log("Sikeres insert!", result.insertId);
                     //email küldés TwilioSendGrid segítségével
-                    const msg = {
+                    /*const msg = {
                         to: email,
                         from: process.env.VERIFIED_EMAIL, // Use the email address or domain you verified above
                         subject: "Email Activation",
@@ -116,7 +122,7 @@ const register = (req, res) => {
                             }
                         }
                     })();
-                    sendConfirmationEmail(username, email, token);
+                    sendConfirmationEmail(username, email, token);*/
                     res.send({
                         message:
                             "Kattintson az emailben érkezett aktiváló linkre!",
