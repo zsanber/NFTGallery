@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import {useForm} from 'react-hook-form';
 import {NavLink} from 'react-router-dom';
 import axios from 'axios';
@@ -9,7 +9,7 @@ import { Terms } from "./Terms";
 
 export const Upload=({userId,categoryList})=> {
   console.log('klien.',userId)
-	const { register, handleSubmit, formState: { errors } } = useForm();
+	const { register, handleSubmit, formState: { errors } , reset } = useForm();
   const [photoCategory,setPhotoCategory]=useState(0)
   const [successful,setSuccessFul]=useState(false)
   const [msg,setMsg] =useState('')
@@ -50,6 +50,10 @@ export const Upload=({userId,categoryList})=> {
 /*console.log('selFile=',selFile)
 console.log('Filesize:',selFile.length>0 ? selFile[0].sizeReadable : 0)*/
 
+  useEffect (() => {
+    reset()
+  }, [])
+
   return (
     <div className="homeBackground">
       <div className="container py-2">
@@ -78,6 +82,7 @@ console.log('Filesize:',selFile.length>0 ? selFile[0].sizeReadable : 0)*/
                <select  className="form-select mb-4" {...register("categ_id", { required: true })} 
                onChange={(event)=>setPhotoCategory(event.target.value)}
                 value={photoCategory} >
+                <option value="0">Choose an option...</option>
 									{categoryList.map(obj => (
 										<option key={obj.idcategorie} value={obj.idcategorie} >
 											{obj.name}
