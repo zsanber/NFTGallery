@@ -1,45 +1,49 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import './SearchBar.css'
-import {useNavigate} from 'react-router-dom'
 
 
-export const SearchBar=({placeholder,posts})=> {
-    const navigate = useNavigate()
-    const [wordEntered,serWordEntered]=useState('')
-    const [filteredPosts,setFilteredPosts]=useState([])
 
-    const handleFilter=(event)=>{
-        const word=event.target.value
+export const SearchBar = ({ placeholder, setPhotosFiltered, photos}) => {
+
+    const [wordEntered, serWordEntered] = useState('')
+    
+
+    const handleFilter = (event) => {
+        const word = event.target.value
         serWordEntered(word)
-        console.log(wordEntered)
-        const newArr=posts.filter(obj=>obj.title.toLowerCase().includes(word.toLowerCase()))
-        if(word!=='')
-            setFilteredPosts(newArr)
-        else
-            setFilteredPosts([])
+        if (word == '')
+            setPhotosFiltered(photos)
+        else {
+
+
+            console.log(wordEntered)
+            const newArr = photos.filter(obj => obj.title.toLowerCase().includes(word.toLowerCase()))
+            if (newArr.length > 0)
+
+                setPhotosFiltered(newArr)
+            else{
+                console.log('nincs találat')
+                setPhotosFiltered(photos)
+            }
+
+        }
+       
     }
-    const handleClear=()=>{
-        setFilteredPosts([])
+    const handleClear = () => {
+
         serWordEntered('')
+        setPhotosFiltered(photos)
     }
-  return (
-    <div>
-        <div className="searchbar d-flex justify-content-between border rounded">
-            <input  className="input p-1" type="text" value={wordEntered} onChange={handleFilter}/>
-            {wordEntered===""? <i className="fa-solid fa-magnifying-glass"></i>:
-                <i className="fa-solid fa-x" onClick={handleClear}></i>}
-        </div>
-        {/*modal*/}
-        {filteredPosts.length!=0 && (
-            <div className="backdrop" onClick={handleClear}>
-                <div className="dataResult">
-                    {filteredPosts.map(obj=>
-                        <div key={obj.id} onClick={()=>navigate('/posts/'+obj.id)}>{obj.title}</div>
-                        )}
-                </div>
+    console.log(wordEntered)
+    return (
+        <div>
+            <div className="searchbar d-flex justify-content-between border rounded">
+                <input className="input p-1" type="text" value={wordEntered} onChange={handleFilter} />
+                {wordEntered === "" ? <i className="fa-solid fa-magnifying-glass"></i> :
+                    <i className="fa-solid fa-x" onClick={handleClear}></i>}
             </div>
-        )}
-      
-    </div>
-  )
+
+
+        </div>
+    )
 }

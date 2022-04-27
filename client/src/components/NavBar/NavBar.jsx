@@ -5,7 +5,7 @@ import "./NavBar.css";
 import myLogo from "../Images/myLogo.png";
 import avatar from "../Images/avatar.svg";
 
-export const NavBar = ({ categoryList, selectedCategory, setSelectedCategory, userName }) => {
+export const NavBar = ({ categoryList, selectedCategory, setSelectedCategory, userName, setPhotosFiltered, photos }) => {
   return (
     <div className="navcontainer">
       <nav className="navbar navbar-expand-lg">
@@ -83,7 +83,7 @@ export const NavBar = ({ categoryList, selectedCategory, setSelectedCategory, us
               </li>
             </ul>
 
-            <SearchBar placeholder="Search" />
+            <SearchBar placeholder="Search" setPhotosFiltered={setPhotosFiltered} photos={photos} />
           </div>
         </div>
       </nav>

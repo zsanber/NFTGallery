@@ -11,6 +11,9 @@ export const Home = ({ categoryList, setCategory, selectedCategory, setSelectedC
   const [photos, setPhotos] = useState([]);
   const [showModal, setShowModal] = useState(false);  
   const [showInfo, setShowInfo] = useState(false);
+  const [photosFiltered, setPhotosFiltered] = useState(photos)
+
+ 
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = (item) => {
@@ -18,6 +21,10 @@ export const Home = ({ categoryList, setCategory, selectedCategory, setSelectedC
     setShowModal(true);
     setShowInfo(false);
   };
+
+  useEffect(() =>{
+    setPhotosFiltered(photos);
+  },[photos])
 
   useEffect(() => {
     fetchPhotos(selectedCategory);    
@@ -47,18 +54,18 @@ export const Home = ({ categoryList, setCategory, selectedCategory, setSelectedC
       return;
     }    
   };
-
+console.log(photosFiltered)
   return (
     <>
       <div className="homeBackground">
-        <NavBar categoryList={categoryList} setCategory={setCategory} 
+        <NavBar  photos={photos} setPhotosFiltered={setPhotosFiltered} categoryList={categoryList} setCategory={setCategory} 
                 selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} userName={userName} />
         <div className="container">
           <div className="row justify-content-center">
             <Sidebar />
             <div className="homeBox col-12 col-lg-8 col-md-8 col-sm-12 mt-5 mb-4 ">
               <div className="homeBoxContent">
-                {photos.map((item, i) => (
+                {photosFiltered.map((item, i) => (
                   <div
                     key={i}
                     className="homePictures d-flex d-inline-flex p-2"

@@ -25,6 +25,8 @@ function App() {
     fetchCategoryList();
   }, []);
 
+
+
   useEffect(() => {
     localStorage.setItem('user', user)
     localStorage.setItem('userName', userName)
