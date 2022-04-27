@@ -4,7 +4,7 @@ const {getPhotos,getPhoto,updatePhoto,getPhotosFiltered,createPhoto,deletePhoto,
 
 router.route('/:userId').get(getPhotos)
 router.route('/admin').get(getUsersByAdmin)
-router.route('/:id').get(getPhoto)
+router.route('/photo/:id').get(getPhoto)
 router.route('/:id').put(updatePhoto)
 router.route('/:userId/categ/:id').get(getPhotosFiltered)
 router.route('/admin/:id').delete(deleteUserByAdmin)

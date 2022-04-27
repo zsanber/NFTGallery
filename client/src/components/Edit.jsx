@@ -18,7 +18,7 @@ export const Edit = ({ userId, categoryList }) => {
 
 	const fetchPhoto = async () => {
 		try {
-			const resp = await axios.get(`http://localhost:5000/photos/${params.id}`);
+			const resp = await axios.get(`http://localhost:5000/photos/photo/${params.id}`);
 			setPhoto(resp.data[0])
 			setPhotoCategory(resp.data[0].categorie_idcategorie)
 		} catch (err) {
