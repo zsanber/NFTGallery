@@ -6,7 +6,7 @@ import { Sidebar } from "./Sidebar/Sidebar";
 import { NavBar } from "./NavBar/NavBar";
 import { Terms } from "./Terms";
 
-export const Home = ({ categoryList, setCategory, selectedCategory, setSelectedCategory, userName }) => {
+export const Home = ({ categoryList, setCategory, selectedCategory, setSelectedCategory, userName, userId }) => {
   const [photo, setPhoto] = useState({});
   const [photos, setPhotos] = useState([]);
   const [showModal, setShowModal] = useState(false);  
@@ -31,9 +31,10 @@ export const Home = ({ categoryList, setCategory, selectedCategory, setSelectedC
   }, [selectedCategory]);
 
   const fetchPhotos = async (selectedCategory) => {
+    console.log('home:', userId)
     let url = selectedCategory == 0 
-      ? 'http://localhost:5000/photos' 
-      : 'http://localhost:5000/photos/categ/' + selectedCategory;
+      ? `http://localhost:5000/photos/${userId}`
+      : `http://localhost:5000/photos/${userId}/categ/` + selectedCategory;
     try {
       const resp = await axios.get(url);
       setPhotos(resp.data);

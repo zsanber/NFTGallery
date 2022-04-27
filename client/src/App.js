@@ -52,7 +52,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home categoryList={categoryList} selectedCategory={selectedCategory} 
-                                         setSelectedCategory={setSelectedCategory} userName={userName} />} />
+                                         setSelectedCategory={setSelectedCategory} userName={userName}  userId={userId} />} />
           <Route path="/forgotten" element={<Forgotten />} />                    
 
           <Route path="/edit/:id" element={<Edit categoryList={categoryList} />} />
@@ -60,7 +60,7 @@ function App() {
           <Route path="/admin" element={<Admin setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
 
           <Route path="/login" element={userId !=0 ? <Home categoryList={categoryList} selectedCategory={selectedCategory} 
-                                         setSelectedCategory={setSelectedCategory} userName={userName} /> : <Login setUser={setUser} setUserName={setUserName} setUserId={setUserId} />  } />
+                                         setSelectedCategory={setSelectedCategory} userName={userName}  userId={userId} /> : <Login setUser={setUser} setUserName={setUserName} setUserId={setUserId} />  } />
           <Route path="/logout" element={<Logout setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
           <Route path="/register" element={<Register />} />
         </Routes>

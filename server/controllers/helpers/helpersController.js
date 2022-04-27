@@ -84,8 +84,10 @@ const getPhoto=(req,res)=>{ //querie done
     }
 //See all photo
     const getPhotos=(req,res)=>{ //querie done
+        const {userId}=req.params
+        console.log('userid:', userId)
         db.query(`select i.idimage, i.title, i.link, i.description, u.username, c.name ctg_name,i.categorie_idcategorie,i.idimage from user u,image i,categorie c 
-        where u.iduser=i.user_iduser and i.categorie_idcategorie=c.idcategorie`,(err,results)=>{
+        where u.iduser=i.user_iduser and i.categorie_idcategorie=c.idcategorie and i.user_iduser=? `,[userId],(err,results)=>{
         if(err)
             console.log(err)
         else
@@ -94,9 +96,10 @@ const getPhoto=(req,res)=>{ //querie done
     }
 //See all images by category
     const getPhotosFiltered=(req,res)=>{ //querie done
-        const {id}=req.params//categ_id
+        const {id, userId}=req.params//categ_id
+        console.log('categoryuserid:', userId)
         db.query(`select i.idimage,i.title,i.link,i.description, u.username,c.name ctg_name,i.categorie_idcategorie,i.idimage from user u,image i,categorie c
-        where u.iduser=i.user_iduser and i.categorie_idcategorie=c.idcategorie and i.categorie_idcategorie=${id}`,(err,results)=>{
+        where u.iduser=i.user_iduser and i.categorie_idcategorie=c.idcategorie and i.categorie_idcategorie=${id} and i.user_iduser=${userId}`,(err,results)=>{
         if(err)
             console.log(err)
         else
