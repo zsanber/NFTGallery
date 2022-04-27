@@ -98,7 +98,7 @@ const register = (req, res) => {
             (err, result) => {
                 if (err) {
                     console.log("insert error: ", err);
-                    res.send({ message: `Error-insert:${err}` });
+                    res.send({ message: `A regisztráció már megtörtént!` });
                 }
                 if (result) {
                     console.log("insert complete: ", result.insertId);
