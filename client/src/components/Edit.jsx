@@ -73,7 +73,7 @@ export const Edit = ({ userId, categoryList }) => {
 						<div className="err">{errors.story && <span>Your story is missing...</span>}</div>
 					</form>
 				</div>
-				<div className="col-12 d-flex flex-column justify-content-end align-items-end fw-bold mb-1">
+				<div className="col-12 d-flex flex-column justify-content-end align-items-end fw-bold mb-1 py-1">
 					<Terms />
 				</div>
 			</div>
