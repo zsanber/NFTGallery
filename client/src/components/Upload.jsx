@@ -4,7 +4,6 @@ import {NavLink} from 'react-router-dom';
 import axios from 'axios';
 import { validateImage } from "image-validator";
 import { Terms } from "./Terms";
-//import FileDrop from './FileDrop'
 
 
 export const Upload=({userId,categoryList})=> {
@@ -19,14 +18,12 @@ export const Upload=({userId,categoryList})=> {
     console.log("kliens oldal: ", data);
     //let url = '/photos'
     verify(data)
-    //sendData(url, data)
-    //reset()
   }
 
   const verify=async (data)=>{
     console.log('verify:')
     const isValidImage = await validateImage(data.image[0]);
-    isValidImage && sendData('/photos',data)//amikor megvan a válasz csak akkor menjen a kérés a szerverre
+    isValidImage && sendData('/photos',data)
   }
   
   const sendData=async (url, data) =>{
@@ -47,8 +44,6 @@ export const Upload=({userId,categoryList})=> {
       setMsg(`'Error while uploading' : ${e.message}`)
     }
   }
-/*console.log('selFile=',selFile)
-console.log('Filesize:',selFile.length>0 ? selFile[0].sizeReadable : 0)*/
 
   useEffect (() => {
     reset()
@@ -67,10 +62,6 @@ console.log('Filesize:',selFile.length>0 ? selFile[0].sizeReadable : 0)*/
                 {...register("image", { required: true })} />
               <div className="err">{errors.image && <span>No file found</span>}</div>
 
-              {/*<div className="files">
-                          <FileDrop setSelFile={setSelFile} setMsg={setMsg}/>
-                    </div>*/}
-
               <input type="text" className="form-control m-2 photoTitle" placeholder="Title"
                 {...register("title", { required: true })} />
               <div className="err">{errors.title && <span>Title required</span>}</div>
@@ -82,7 +73,7 @@ console.log('Filesize:',selFile.length>0 ? selFile[0].sizeReadable : 0)*/
                <select  className="form-select mb-4" {...register("categ_id", { required: true })} 
                onChange={(event)=>setPhotoCategory(event.target.value)}
                 value={photoCategory} >
-                <option value="0">Choose an option...</option>
+                <option value="0">Choose a category...</option>
 									{categoryList.map(obj => (
 										<option key={obj.idcategorie} value={obj.idcategorie} >
 											{obj.name}
