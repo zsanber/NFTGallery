@@ -57,7 +57,7 @@ const login = (req, res) => {
                             if (result[0].status == "active"){
                                 console.log(result[0])
                                 res.send({
-                                    message: "sikeres bejelentkezés!",
+                                    message: "successful login!",
                                     username: result[0].username,
                                     userId: result[0].iduser,
                                 
@@ -65,15 +65,15 @@ const login = (req, res) => {
                             }else
                                 res.status(401).send({
                                     message:
-                                        "Szükséges a fiok aktiválása! emailben el lett küldve az aktiválási link!",
+                                        "The activation link has been sent by e-mail!",
                                 });
                         else
                             res.status(401).send({
-                                message: "hibás email/jelszó páros!",
+                                message: "wrong email / password pair",
                             });
                     }
                 );
-            } else res.status(401).send({ message: "nem létező email cím!" });
+            } else res.status(401).send({ message: "non-existent email address!" });
         }
     );
 };
@@ -97,11 +97,11 @@ const register = (req, res) => {
             [username, email, hashedPw, regDateStr, "pending", token],
             (err, result) => {
                 if (err) {
-                    console.log("insert error:", err);
+                    console.log("insert error: ", err);
                     res.send({ message: `Error-insert:${err}` });
                 }
                 if (result) {
-                    console.log("Sikeres insert!", result.insertId);
+                    console.log("insert complete: ", result.insertId);
                     //email küldés TwilioSendGrid segítségével
                     /*const msg = {
                         to: email,
@@ -125,7 +125,7 @@ const register = (req, res) => {
                     sendConfirmationEmail(username, email, token);*/
                     res.send({
                         message:
-                            "Kattintson az emailben érkezett aktiváló linkre!",
+                            "Click on the activation link in the email!",
                     });
                 }
             }
@@ -158,8 +158,8 @@ const verifyUser = (req, res) => {
                         res.send({ message: `Error-activation failed:${err}` });
                     }
                     if (result) {
-                        console.log("Sikeres fiok aktiválás!");
-                        res.send({ message: "Sikeres fiok aktiválás!" });
+                        console.log("Successful activation!");
+                        res.send({ message: "Successful activation!" });
                     }
                 }
             );
