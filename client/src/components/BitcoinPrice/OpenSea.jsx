@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
+import {Button} from "react-bootstrap"
 
 export const OpenSea = () => {
-      return (
-        <div className="btc">
-          <img className="btc-logo" src="https://opensea.io/static/images/logos/opensea.svg" alt="Opensea" />
-          <span className="btc-price">OpenSea</span>       
-        </div>
-      );
-  };
-  
+  return (
+    <div className="btc">
+      <img className="btc-logo" src="https://opensea.io/static/images/logos/opensea.svg" alt="Opensea" />
+      <Button variant="link" href="https://opensea.io/" >Opensea</Button>
+    </div>
+  );
+};
+
 export default OpenSea;
