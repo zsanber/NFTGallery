@@ -39,6 +39,9 @@ export const Edit = ({ userId, categoryList }) => {
 		const resp = await axios.put(url, formData)
 		resp.status === 200 ? setSuccessful(true) : setSuccessful(false)
 		setMsg(resp.data.message)
+		setTimeout(() => {
+			window.location="/"
+		  }, 2000);
 	}
 
 	return (

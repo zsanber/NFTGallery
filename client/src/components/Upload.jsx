@@ -39,6 +39,9 @@ export const Upload=({userId,categoryList})=> {
       console.log(data)
       setMsg(data.message)
       resp.status===200 ? setSuccessFul(true):setSuccessFul(false)
+      setTimeout(() => {
+        window.location="/"
+        }, 2000);
     }catch(e){
       setSuccessFul(false)
       setMsg(`'Error while uploading' : ${e.message}`)
