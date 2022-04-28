@@ -61,7 +61,7 @@ export const Edit = ({ userId, categoryList }) => {
 							<div className="col-md-6">
 								<select className="form-select m-2" {...register("categ_id", { required: true })} 
 										onChange={(event) => setPhotoCategory(event.target.value)}
-										value={photoCategory} >
+										value={photoCategory} data-testid="editComponent" >
 									{categoryList.map(obj => (
 										<option key={obj.idcategorie} value={obj.idcategorie} >
 											{obj.name}
