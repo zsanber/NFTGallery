@@ -32,8 +32,13 @@ function App() {
     localStorage.setItem('userName', userName)
     localStorage.setItem('userId', userId)
 
-    if(!userName && (window.location.pathname != '/login') && (window.location.pathname != '/register')) {      
+    if(!userName && 
+      window.location.pathname != '/login' 
+      && window.location.pathname != '/register' 
+      && window.location.pathname != '/forgotten') 
+      {      
       window.location = '/login';
+
     }
   }, [user, userName, userId]);
 
