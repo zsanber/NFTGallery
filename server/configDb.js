@@ -14,4 +14,6 @@ const configDb={
     multipleStatements  : true
 }
 
+
 module.exports=configDb
+
