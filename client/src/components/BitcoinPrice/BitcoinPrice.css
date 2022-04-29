@@ -12,8 +12,18 @@
     margin-right: 5px;
   }
   .btc-price {
-    color: #fff;
+    color: white;
     font-size: 18px;
     font-weight: bold;
     font-family: sans-serif;
+  }
+  .opensea{
+    color:white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: sans-serif;
+  }
+  .opensea:hover{
+    text-decoration: underline;
   }

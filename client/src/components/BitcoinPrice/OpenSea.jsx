@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import {Button} from "react-bootstrap"
+import "./BitcoinPrice.css";
 
 export const OpenSea = () => {
   return (
     <div className="btc">
       <img className="btc-logo" src="https://opensea.io/static/images/logos/opensea.svg" alt="Opensea" />
-      <Button variant="link" href="https://opensea.io/" target="blank">Opensea</Button>
+      <span className="btc-price"><a className="opensea" href="https://opensea.io/" target="blank">OpenSea</a></span> 
     </div>
   );
 };
