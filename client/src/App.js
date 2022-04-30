@@ -56,8 +56,8 @@ function App() {
     <>
       <HashRouter>
         <Routes>
-          {/*<Route path="/" element={<Home categoryList={categoryList} selectedCategory={selectedCategory} 
-                                         setSelectedCategory={setSelectedCategory} userName={userName}  userId={userId} />} />*/}
+          <Route path="/" element={<Home categoryList={categoryList} selectedCategory={selectedCategory} 
+                                         setSelectedCategory={setSelectedCategory} userName={userName}  userId={userId} />} />
           <Route path="/forgotten" element={<Forgotten />} />                    
 
           <Route path="/edit/:id" element={<Edit categoryList={categoryList} />} />
