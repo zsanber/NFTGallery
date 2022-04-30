@@ -63,9 +63,9 @@ console.log(photosFiltered)
         <NavBar  photos={photos} setPhotosFiltered={setPhotosFiltered} categoryList={categoryList} setCategory={setCategory} 
                 selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} userName={userName} />
         <div className="container">
-          <div className="row justify-content-center">
+          <div className="row justify-content-center ">
             <Sidebar userName={userName} />
-            <div className="homeBox col-12 col-lg-8 col-md-8 col-sm-12 mt-5 mb-4 ">
+            <div className="homeBox col-12 col-lg-8 col-md-8 col-sm-12 mt-5 mb-4">
               <div className="homeBoxContent">
                 {photosFiltered.map((item, i) => (
                   <div

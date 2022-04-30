@@ -26,6 +26,10 @@
 
 .input{
     background-color:transparent !important;
-    border: transparent !important;
+    /* border: transparent !important; */
     font-size: 12px !important;
+}
+
+.fa-magnifying-glass{
+    margin: 5px 0px 0px 5px;
 }

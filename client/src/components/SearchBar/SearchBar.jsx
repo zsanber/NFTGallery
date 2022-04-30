@@ -37,8 +37,8 @@ export const SearchBar = ({ placeholder, setPhotosFiltered, photos}) => {
     console.log(wordEntered)
     return (
         <div>
-            <div className="searchbar d-flex justify-content-between border rounded">
-                <input className="input p-1" type="text" value={wordEntered} onChange={handleFilter} />
+            <div className="searchbar d-flex justify-content-start">
+                <input className="input p-1 border border-primary" type="text" value={wordEntered} onChange={handleFilter} />
                 {wordEntered === "" ? <i className="fa-solid fa-magnifying-glass"></i> :
                     <i className="fa-solid fa-x" onClick={handleClear}></i>}
             </div>
