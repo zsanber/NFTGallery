@@ -64,7 +64,7 @@ function App() {
           <Route path="/upload" element={<Upload categoryList={categoryList} userId={userId} />} />
           <Route path="/admin" element={<Admin setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
 
-          <Route path="/" element={userId !=0 ? <Home categoryList={categoryList} selectedCategory={selectedCategory} 
+          <Route path="/login" element={userId !=0 ? <Home categoryList={categoryList} selectedCategory={selectedCategory} 
                                          setSelectedCategory={setSelectedCategory} userName={userName}  userId={userId} /> : <Login setUser={setUser} setUserName={setUserName} setUserId={setUserId} />  } />
           <Route path="/logout" element={<Logout setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
           <Route path="/register" element={<Register />} />
