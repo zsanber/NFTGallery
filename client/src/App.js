@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route, useForm } from 'react-router-dom';
+import { HashRouter, Routes, Route, useForm } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.js';
 import './App.css';
@@ -54,22 +54,22 @@ function App() {
   console.log('Appban vagyunk: ' , userId)
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
-          <Route path="/" element={<Home categoryList={categoryList} selectedCategory={selectedCategory} 
-                                         setSelectedCategory={setSelectedCategory} userName={userName}  userId={userId} />} />
+          {/*<Route path="/" element={<Home categoryList={categoryList} selectedCategory={selectedCategory} 
+                                         setSelectedCategory={setSelectedCategory} userName={userName}  userId={userId} />} />*/}
           <Route path="/forgotten" element={<Forgotten />} />                    
 
           <Route path="/edit/:id" element={<Edit categoryList={categoryList} />} />
           <Route path="/upload" element={<Upload categoryList={categoryList} userId={userId} />} />
           <Route path="/admin" element={<Admin setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
 
-          <Route path="/login" element={userId !=0 ? <Home categoryList={categoryList} selectedCategory={selectedCategory} 
+          <Route path="/" element={userId !=0 ? <Home categoryList={categoryList} selectedCategory={selectedCategory} 
                                          setSelectedCategory={setSelectedCategory} userName={userName}  userId={userId} /> : <Login setUser={setUser} setUserName={setUserName} setUserId={setUserId} />  } />
           <Route path="/logout" element={<Logout setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
           <Route path="/register" element={<Register />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }

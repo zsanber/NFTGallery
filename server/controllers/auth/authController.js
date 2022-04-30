@@ -103,7 +103,7 @@ const register = (req, res) => {
                 if (result) {
                     console.log("insert complete: ", result.insertId);
                     //email küldés TwilioSendGrid segítségével
-                    /*const msg = {
+                    const msg = {
                         to: email,
                         from: process.env.VERIFIED_EMAIL, // Use the email address or domain you verified above
                         subject: "Email Activation",
@@ -122,7 +122,7 @@ const register = (req, res) => {
                             }
                         }
                     })();
-                    sendConfirmationEmail(username, email, token);*/
+                    sendConfirmationEmail(username, email, token);
                     res.send({
                         message:
                             "Click on the activation link in the email!",
