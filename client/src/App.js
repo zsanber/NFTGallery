@@ -12,7 +12,7 @@ import { Admin } from './components/Admin/Admin';
 import { Logout } from './components/Logout';
 import { Edit } from './components/Edit';
 import axios from 'axios';
-import {  useNavigate } from 'react-router-dom';
+
 
 function App() {
   const [user, setUser] = useState(true)
@@ -32,14 +32,14 @@ function App() {
     localStorage.setItem('userName', userName)
     localStorage.setItem('userId', userId)
 
-    if(!userName && 
-      window.location.pathname != '/login' 
+    /*if(!userName && 
+      window.location.pathname != '/' 
       && window.location.pathname != '/register' 
       && window.location.pathname != '/forgotten') 
       {      
-      window.location = '/login';
+      window.location = '/';
 
-    }
+    }*/
   }, [user, userName, userId]);
 
   const fetchCategoryList = async () => {
@@ -56,15 +56,15 @@ function App() {
     <>
       <HashRouter>
         <Routes>
-          <Route path="/" element={<Home categoryList={categoryList} selectedCategory={selectedCategory} 
-                                         setSelectedCategory={setSelectedCategory} userName={userName}  userId={userId} />} />
+          {/*<Route path="/" element={<Home categoryList={categoryList} selectedCategory={selectedCategory} 
+                                         setSelectedCategory={setSelectedCategory} userName={userName}  userId={userId} />} />*/}
           <Route path="/forgotten" element={<Forgotten />} />                    
 
           <Route path="/edit/:id" element={<Edit categoryList={categoryList} />} />
           <Route path="/upload" element={<Upload categoryList={categoryList} userId={userId} />} />
           <Route path="/admin" element={<Admin setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
 
-          <Route path="/login" element={userId !=0 ? <Home categoryList={categoryList} selectedCategory={selectedCategory} 
+          <Route path="/" element={userId !=0 ? <Home categoryList={categoryList} selectedCategory={selectedCategory} 
                                          setSelectedCategory={setSelectedCategory} userName={userName}  userId={userId} /> : <Login setUser={setUser} setUserName={setUserName} setUserId={setUserId} />  } />
           <Route path="/logout" element={<Logout setUser={setUser} setUserName={setUserName} setUserId={setUserId} />} />
           <Route path="/register" element={<Register />} />

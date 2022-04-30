@@ -19,10 +19,11 @@ app.use(express.static("build"))
 app.use(fileUpload({useTempFiles:true}))
 app.use(morgan('dev'))
 
-app.use('/authRoute',authRoute)
+
 app.use('/photos',photos)
 app.use('/category',category)
 //console.log('process...: ',process.env)
+app.use('/authRoute',authRoute)
 
 
 const port=process.env.PORT ||5000

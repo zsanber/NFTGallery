@@ -13,7 +13,7 @@ export const Logout=({setUser,setUserName,setUserId})=> {
      localStorage.removeItem('user')
      localStorage.removeItem('userName')
      localStorage.removeItem('userId')
-     navigate("/login");
+     navigate("/");
   },[])
  
   return (

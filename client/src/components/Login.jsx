@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import {Terms} from './Terms';
-
+import {NavLink} from "react-router-dom"
 
 export const Login=({ setUser, setUserName, setUserId })=> {
   const {register, handleSubmit, formState: { errors },} = useForm();
@@ -50,9 +50,9 @@ export const Login=({ setUser, setUserName, setUserId })=> {
                         {errors.email && <p className="err text-danger small">Email address required</p>}
                         <input type="password" {...register('password', { required: true })} className="form-control mt-4 border border-info rounded p-2" placeholder="Password" />
                         {errors.password && <p className="err text-danger small">Faulty password</p>}
-                        <a className="text-info fw-bold text-decoration-none mb-4 p-2" href="/forgotten">Forgot your password?</a>
+                        <NavLink className="text-info fw-bold text-decoration-none mb-4 p-2" to="/forgotten" href="#">Forgot your password?</NavLink>
                         <input type="submit" value="Login" className="btn btn-info form-control rounded mt-4 mb-1 fs-5 fw-bold text-white" />
-                        <a className="text-info fw-bold text-decoration-none p-2" href="/register">Not a member? Sign up Here!</a>
+                        <NavLink className="text-info fw-bold text-decoration-none p-2" to="/register" href="#">Not a member? Sign up Here!</NavLink>
                     </form>
                     <div>{msg}</div>
                 </div>

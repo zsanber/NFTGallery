@@ -5,6 +5,7 @@ import { Modal } from "react-bootstrap";
 import { Sidebar } from "./Sidebar/Sidebar";
 import { NavBar } from "./NavBar/NavBar";
 import { Terms } from "./Terms";
+import {NavLink} from "react-router-dom"
 
 export const Home = ({ categoryList, setCategory, selectedCategory, setSelectedCategory, userName, userId }) => {
   const [photo, setPhoto] = useState({});
@@ -130,9 +131,9 @@ console.log(photosFiltered)
                 </button>
               </div>
               <div className="row justify-content-center">
-                <a href={'/edit/' + photo.idimage} className="col-9 btn btn-success rounded mt-1 mb-1 fs-5 fw-bold text-white">
+                <NavLink to={'/edit/' + photo.idimage} href="#" className="col-9 btn btn-success rounded mt-1 mb-1 fs-5 fw-bold text-white">
                   Update
-                </a>
+                </NavLink>
                 <button onClick={() => deletePicture(photo)} className="col-3 btn btn-danger rounded mt-1 mb-1 fs-5 fw-bold text-white">
                   Delete
                 </button>
