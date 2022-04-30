@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
+import {Terms} from './Terms';
 
 
 export const Forgotten=()=> {
@@ -12,8 +13,9 @@ export const Forgotten=()=> {
 
     return (
         <div className="reg">
-            <div className="position-absolute top-50 start-50 translate-middle">
-                <div className="box">
+          <div className="row justify-content-center mx-auto col-12">
+            <div className="col-12">
+                <div className="box col-sm-12 position-absolute top-50 start-50 translate-middle">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <h3 className="text-secondary fw-bold mb-3">Forgotten your password?</h3>
                         <span className="text-secondary ">No problem. Enter your email address and we will reset your password.</span>
@@ -23,6 +25,10 @@ export const Forgotten=()=> {
                     </form>
                 </div>
             </div>
+            <div className="col-12 d-flex flex-column justify-content-end align-items-end fw-bold">
+              <Terms />
+            </div>
+          </div>
         </div>
   )
 }

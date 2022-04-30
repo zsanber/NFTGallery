@@ -12,13 +12,15 @@
     margin-right: 0 !important;
     width: 100%;
     margin:0;
-    display: flex;
+    display: flex !important;
     justify-content: center;
 }
 
 .box {
-    width: 500px;
+    max-width: 500px;
+    min-width: 300px;
     height: 450px;
+    display: flex;
     padding: 50px 70px;
     background: white;
     text-align: center;
@@ -29,6 +31,19 @@
     border-bottom-right-radius: 30px;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
 }
+
+@media (max-width: 579px) {
+    .reg {
+        padding: 0px !important;
+    }
+    .box{
+        padding: 20px !important;
+    }
+    form{
+        padding-top: 40px;
+    }
+}
+
 .card{
     border-top: 0 !important;
 }

@@ -40,27 +40,27 @@ export const Login=({ setUser, setUserName, setUserId })=> {
   }
 
     return (
-        <div className="reg row">
-        <div className="col-12">
-            <div className="position-absolute top-50 start-50 translate-middle">
-                <div className="box">
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                    <h2 className="text-secondary fw-bold mb-3">Welcome</h2>
-                        <input {...register('email', { required: true })} className="form-control mt-4 border border-info rounded p-2" placeholder="Email address" />
-                        {errors.email && <p className="err text-danger small">Email address required</p>}
-                        <input type="password" {...register('password', { required: true })} className="form-control mt-4 border border-info rounded p-2" placeholder="Password" />
-                        {errors.password && <p className="err text-danger small">Faulty password</p>}
-                        <NavLink className="text-info fw-bold text-decoration-none mb-4 p-2" to="/forgotten" href="#">Forgot your password?</NavLink>
-                        <input type="submit" value="Login" className="btn btn-info form-control rounded mt-4 mb-1 fs-5 fw-bold text-white" />
-                        <NavLink className="text-info fw-bold text-decoration-none p-2" to="/register" href="#">Not a member? Sign up Here!</NavLink>
-                    </form>
-                    <div>{msg}</div>
-                </div>
+      <div className="reg">
+        <div className="row justify-content-center mx-auto col-12">
+          <div className="col-12">
+            <div className="box col-sm-12 position-absolute top-50 start-50 translate-middle">
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <h2 className="text-secondary fw-bold mb-3">Welcome</h2>
+                <input {...register('email', { required: true })} className="form-control mt-4 border border-info rounded p-2" placeholder="Email address" />
+                {errors.email && <p className="err text-danger small">Email address required</p>}
+                <input type="password" {...register('password', { required: true })} className="form-control mt-4 border border-info rounded p-2" placeholder="Password" />
+                {errors.password && <p className="err text-danger small">Faulty password</p>}
+                <NavLink className="text-info fw-bold text-decoration-none mb-4 p-2" to="/forgotten" href="#">Forgot your password?</NavLink>
+                <input type="submit" value="Login" className="btn btn-info form-control rounded mt-4 mb-1 fs-5 fw-bold text-white" />
+                <NavLink className="text-info fw-bold text-decoration-none p-2" to="/register" href="#">Not a member? Sign up Here!</NavLink>
+              </form>
+              <div>{msg}</div>
             </div>
-            </div>
-            <div className="col-12 d-flex flex-column justify-content-end align-items-end fw-bold">
+          </div>
+          <div className="col-12 d-flex flex-column justify-content-end align-items-end fw-bold">
             <Terms />
-            </div>
+          </div>
         </div>
+      </div>
   )
 }
