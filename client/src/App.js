@@ -31,15 +31,6 @@ function App() {
     localStorage.setItem('user', user)
     localStorage.setItem('userName', userName)
     localStorage.setItem('userId', userId)
-
-    /*if(!userName && 
-      window.location.pathname != '/' 
-      && window.location.pathname != '/register' 
-      && window.location.pathname != '/forgotten') 
-      {      
-      window.location = '/';
-
-    }*/
   }, [user, userName, userId]);
 
   const fetchCategoryList = async () => {
