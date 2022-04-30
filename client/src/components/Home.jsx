@@ -33,8 +33,8 @@ export const Home = ({ categoryList, setCategory, selectedCategory, setSelectedC
   const fetchPhotos = async (selectedCategory) => {
     console.log('home:', userId)
     let url = selectedCategory == 0 
-      ? `http://localhost:5000/photos/${userId}`
-      : `http://localhost:5000/photos/${userId}/categ/` + selectedCategory;
+      ? `/photos/${userId}`
+      : `/photos/${userId}/categ/` + selectedCategory;
     try {
       const resp = await axios.get(url);
       setPhotos(resp.data);
@@ -46,7 +46,7 @@ export const Home = ({ categoryList, setCategory, selectedCategory, setSelectedC
   const deletePicture = async (photo) => {
     if (window.confirm("Are you sure that you want to delete the picture?") == true) {      
       try {
-        await axios.delete(`http://localhost:5000/photos/${photo.idimage}/${photo.ImageId}`);
+        await axios.delete(`/photos/${photo.idimage}/${photo.ImageId}`);
         await fetchPhotos(selectedCategory);
         setShowModal(false);
       } catch (err) {

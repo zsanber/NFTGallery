@@ -43,7 +43,7 @@ function App() {
   }, [user, userName, userId]);
 
   const fetchCategoryList = async () => {
-    let url = "http://localhost:5000/category";
+    let url = "/category";
     try {
       const resp = await axios.get(url);
       setCategoryList(resp.data);

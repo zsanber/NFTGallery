@@ -14,7 +14,7 @@ useEffect(()=> {
 
 const fetchList=async ()=>{
     try {
-    const resp=await axios.get('http://localhost:5000/photos/admin')
+    const resp=await axios.get('/photos/admin')
     setList(resp.data)
     }catch(err){
     console.log(err)
@@ -23,7 +23,7 @@ const fetchList=async ()=>{
 
 const handleDelete= async (item)=>{
   if (window.confirm(`Biztosan ki szeretnéd törölni a ${item.name} nevű usert?`) == true) {
-    const resp = await axios.delete(`http://localhost:5000/photos/admin/${item.iduser}`);
+    const resp = await axios.delete(`/photos/admin/${item.iduser}`);
     fetchList();
   } else {
     console.log('Nincs törlés!')
