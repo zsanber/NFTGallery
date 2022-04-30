@@ -43,11 +43,11 @@ export const NavBar = ({ categoryList, selectedCategory, setSelectedCategory, us
                   <i className="fa fa-caret-down"></i>
                 </div>
                 <div className="dropdown-content">
-                  <a onClick={() => setSelectedCategory(0)}  role="button" >All</a>
+                  <NavLink onClick={() => setSelectedCategory(0)} href="#" role="button" >All</NavLink>
                   {categoryList.map((item, i) => (
-                    <a key={i} onClick={() => setSelectedCategory(item.idcategorie)}  role="button" >
+                    <NavLink key={i}  onClick={() => setSelectedCategory(item.idcategorie)} href="#"  role="button" >
                       {item.name}
-                    </a>
+                    </NavLink>
                   ))}
                 </div>
               </li>
