@@ -11,6 +11,7 @@ import { Upload } from "./components/Upload";
 import { Admin } from "./components/Admin/Admin";
 import { Logout } from "./components/Logout";
 import { Edit } from "./components/Edit";
+import {Welcome} from "./components/Welcome";
 import axios from "axios";
 
 function App() {
@@ -51,6 +52,14 @@ function App() {
                     <Routes>
                         {/*<Route path="/" element={<Home categoryList={categoryList} selectedCategory={selectedCategory} 
                                          setSelectedCategory={setSelectedCategory} userName={userName}  userId={userId} />} />*/}
+                        <Route
+                            path="/confirm/:confirmationCode"
+                            element={
+                                <Welcome
+                                />
+                            }
+                        />
+                        
                         <Route path="/forgotten" element={<Forgotten />} />
 
                         <Route
@@ -109,8 +118,10 @@ function App() {
                                 />
                             }
                         />
+         
                         <Route path="/register" element={<Register />} />
                     </Routes>
+                    
                 )}
             </HashRouter>
         </>

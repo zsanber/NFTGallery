@@ -2,6 +2,7 @@ import axios from 'axios';
 import React,{ useEffect, useState} from 'react'
 import { useForm } from 'react-hook-form';
 import {Terms} from './Terms';
+import {Welcome} from './Welcome';
 
 
 export const Register=()=> {

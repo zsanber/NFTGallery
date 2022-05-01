@@ -1,6 +1,8 @@
 const mysql = require("mysql");
 const configDb = require("../../configDb");
 const db = mysql.createConnection(configDb);
+const sgMail = require('@sendgrid/mail');
+const postmark = require('postmark');
 
 const { myToken } = require("../../models/encryption/token");
 
@@ -103,17 +105,23 @@ const register = (req, res) => {
                 if (result) {
                     console.log("insert complete: ", result.insertId);
                     //email küldés TwilioSendGrid segítségével
+                    const client = new postmark.ServerClient(process.env.POSTMARK_API_KEY);
                     const msg = {
-                        to: email,
-                        from: process.env.VERIFIED_EMAIL, // Use the email address or domain you verified above
-                        subject: "Email Activation",
-                        text: "and easy to do anywhere, even with Node.js",
-                        html: "<strong>and easy to do anywhere, even with Node.js</strong>",
+                        "To": email,
+                        "From": process.env.VERIFIED_EMAIL, // Use the email address or domain you verified above
+                        "Subject": "Email Activation",
+                        "HtmlBody": `<div>
+                        <h1>Email confirmation</h1>
+                        <h2>Hello ${username} !</h2>
+                        <p>Thank you for...</p>
+                        <a href="${process.env.DOMAIN}/authRoute/confirm/${token}">Click here</a>
+                    </div>
+                `,
                     };
                     //ES8
                     (async () => {
                         try {
-                            await sgMail.send(msg);
+                            await client.sendEmail(msg);
                         } catch (error) {
                             console.error(error);
 
@@ -122,7 +130,7 @@ const register = (req, res) => {
                             }
                         }
                     })();
-                    sendConfirmationEmail(username, email, token);
+                    //sendConfirmationEmail(username, email, token);
                     res.send({
                         message:
                             "Click on the activation link in the email!",
