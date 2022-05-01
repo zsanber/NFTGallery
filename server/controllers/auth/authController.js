@@ -44,7 +44,7 @@ const login = (req, res) => {
         "SELECT iduser,password,username,status FROM user WHERE email=?",
         [email],
         (err, result) => {
-            if (err) res.send({ message: err });
+            if (err) res.send({ message: err + 'SELECT HIBA' });
             if (result.length == 1) {
                 
                 bcrypt.compare(

@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const express=require('express')
 const cors=require('cors')
 const fileUpload=require('express-fileupload')
@@ -10,11 +11,16 @@ const authRoute=require('./routes/auth/authRoute')
 
 
 const app=express()
-
+const path = require('path')
+const httpsRedirect = require('express-https-redirect');
 app.use(cors())
 app.use(express.json())
 
-app.use(express.static("build"))
+//app.use(express.static("build"))
+
+app.use('/', httpsRedirect());
+
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.use(fileUpload({useTempFiles:true}))
 app.use(morgan('dev'))
@@ -22,11 +28,12 @@ app.use(morgan('dev'))
 
 app.use('/photos',photos)
 app.use('/category',category)
-//console.log('process...: ',process.env)
+console.log('process...: ',process.env)
 app.use('/authRoute',authRoute)
 
 
-const port=process.env.PORT ||5000
+const port=process.env.PORT || 5000
+
 
 app.listen(port,()=>console.log(`Server running on port ${port}`))
 

@@ -20,9 +20,12 @@ export const Login=({ setUser, setUserName, setUserId })=> {
   }
 
   const sendData = async (url, formdata) => {
+    for (let obj in formdata)
+      console.log(obj,formdata[obj])
     try {
       const resp = await axios.post(url, formdata, { headers: { 'Content-Type': 'application/json' } })
       const data = await resp.data
+      console.log('VÁLASZ A SZERVERRŐL: ', data)
       setSuccessful(true)
       setUserName(data.username)
       setUserId(data.userId)
