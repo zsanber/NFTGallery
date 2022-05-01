@@ -61,30 +61,30 @@ export const Register=()=> {
 
 
   return (
-      <div className="reg row">
-          <div className="col-12">
-              <div className="position-absolute top-50 start-50 translate-middle">
-                  <div className="box">
-                      <form onSubmit={handleSubmit(onSubmit)}>
-                          <h3 className="text-secondary fw-bold mb-3">Not a member yet?</h3>
-                          <input {...register('username', { required: true, maxLength: 20 })}
-                              className="form-control rounded mt-4 border border-info rounded p-2" placeholder="Username" onBlur={(e) => checkUsername(e)} />
-                          {errors.userName && <p className="err text-danger small">Username is required</p>}
-                          <input {...register('email', { required: true })} className="form-control rounded mt-3 border border-info rounded p-2" placeholder="Email address"
-                              onBlur={(e) => checkEmail(e)} />
-                          {errors.email && <p className="err text-danger small">Email address is required</p>}
-                          <input type="password" {...register('password', { required: true })} className="form-control rounded mt-3 border border-info rounded p-2" placeholder="Password" />
-                          {errors.password && <p className="err text-danger small">Faulty password</p>}
-                          <input type="submit" value="Create account" className="btn btn-info form-control rounded fs-5 fw-bold text-white mt-5 mb-1"
-                              disabled={!validUsername || !validEmail} />
-                      </form>
-                      <div>{msg}</div>
-                  </div>
-              </div>
-          </div>
-          <div className="col-12 d-flex flex-column justify-content-end align-items-end fw-bold">
-              <Terms />
-          </div>
+  <div className="reg">
+    <div className="row justify-content-center mx-auto col-12">
+      <div className="col-12">
+        <div className="box col-sm-12 position-absolute top-50 start-50 translate-middle">
+            <form className="col-sm-12" onSubmit={handleSubmit(onSubmit)}>
+              <h3 className="text-secondary fw-bold mb-3">Not a member yet?</h3>
+              <input {...register('username', { required: true, maxLength: 20 })}
+                className="form-control rounded mt-4 border border-info rounded p-2" placeholder="Username" onBlur={(e) => checkUsername(e)} />
+              {errors.userName && <p className="err text-danger small">Username is required</p>}
+              <input {...register('email', { required: true })} className="form-control rounded mt-3 border border-info rounded p-2" placeholder="Email address"
+                onBlur={(e) => checkEmail(e)} />
+              {errors.email && <p className="err text-danger small">Email address is required</p>}
+              <input type="password" {...register('password', { required: true })} className="form-control rounded mt-3 border border-info rounded p-2" placeholder="Password" />
+              {errors.password && <p className="err text-danger small">Faulty password</p>}
+              <input type="submit" value="Create account" className="btn btn-info form-control rounded fs-5 fw-bold text-white mt-5 mb-1"
+                disabled={!validUsername || !validEmail} />
+            </form>
+            <div>{msg}</div>
+        </div>
       </div>
+      <div className="col-12 d-flex flex-column justify-content-end align-items-end fw-bold">
+        <Terms />
+      </div>
+    </div>
+  </div>
   )
 }

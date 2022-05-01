@@ -38,6 +38,7 @@
     }
     .box{
         padding: 20px !important;
+        justify-content: center;
     }
     form{
         padding-top: 40px;
