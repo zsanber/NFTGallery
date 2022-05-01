@@ -21,7 +21,8 @@ function App() {
         localStorage.getItem("userName") ? localStorage["userName"] : ""
     );
     const [userId, setUserId] = useState(
-        localStorage.getItem("userId") ? localStorage["userId"] : 0);
+        localStorage.getItem("userId") ? localStorage["userId"] : 0
+    );
 
     useEffect(() => {
         fetchCategoryList();
