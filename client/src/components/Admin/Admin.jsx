@@ -23,7 +23,7 @@ const fetchList=async ()=>{
 }
 
 const handleDelete= async (item)=>{
-  if (window.confirm(`Biztosan ki szeretnéd törölni a ${item.username} nevű usert?`) == true) {
+  if (window.confirm(`Are you sure you want to delete user ${item.username}?`) == true) {
     const resp = await axios.delete(`/photos/admin/${item.iduser}`);
     fetchList();
   } else {
