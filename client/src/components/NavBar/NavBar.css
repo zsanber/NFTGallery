@@ -107,7 +107,8 @@
 }
 
 .dropdown-content a:hover {
-  color: rgb(130, 88, 88) !important;
+  color: red !important;
+  text-align: left !important;
 }
 
 .dropdown:hover .dropdown-content {

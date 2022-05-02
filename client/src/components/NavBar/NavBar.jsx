@@ -70,7 +70,7 @@ export const NavBar = ({
 
             <ul className="navbar-nav rightNav ms-auto">
               <li className="dropdown nav-item nav-link">
-                <div className="dropbtn nav-item">
+                <div className="dropbtn">
                   <img
                     className="nav-img"
                     src={avatar}
@@ -79,14 +79,14 @@ export const NavBar = ({
                   />
                 </div>
                 <ul className="dropdown-content">
-                  <li className="nav-item">
+                  <li className="categoryoption">
                     <NavLink to="/logout" href="#">
                       logout
                     </NavLink>
                   </li>
 
                   {role == "admin" && (
-                    <li className="nav-item">
+                    <li className="categoryoption">
                       <NavLink to="/admin" href="#">
                         admin
                       </NavLink>
