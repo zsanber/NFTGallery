@@ -84,7 +84,7 @@ export const Upload = ({ userId, categoryList }) => {
                   ))}
                 </select>
               </div>
-              <div className={successful ? "col-md-6 text-danger" : "col-md-6 text-success"}>{msg}</div>
+              <div className={successful ? "col-md-6 text-success" : "col-md-6 text-danger"}>{msg}</div>
             </div>
             <textarea cols="30" rows="10" className="form-control"
               {...register("story", { required: true })} placeholder="Tell your story..."></textarea>
