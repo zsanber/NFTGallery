@@ -5,7 +5,7 @@ import "./NavBar.css";
 import myLogo from "../Images/myLogo.png";
 import avatar from "../Images/avatar.svg";
 
-export const NavBar = ({ categoryList, selectedCategory, setSelectedCategory, userName, setPhotosFiltered, photos }) => {
+export const NavBar = ({ categoryList, selectedCategory, setSelectedCategory, userName, setPhotosFiltered, photos, role }) => {
   return (
     <div className="navcontainer">
       <nav className="navbar navbar-expand-lg">
@@ -63,22 +63,22 @@ export const NavBar = ({ categoryList, selectedCategory, setSelectedCategory, us
                     title={userName}
                   />
                 </div>
-                <ul className="dropdown-content">
-                  {
-                    <li className="nav-item">
-                      <NavLink to="/logout" href="#">
-                        Logout
-                      </NavLink>
-                    </li>
-                  }
+                <ul className="dropdown-content">                  
+                  <li className="nav-item">
+                    <NavLink to="/logout" href="#">
+                      Logout
+                    </NavLink>
+                  </li>
+                  
+                  {console.log(role)}
 
-                  {
+                  {role == "admin" && (
                     <li className="nav-item">
                       <NavLink to="/admin" href="#">
-                        admin
+                        Admin
                       </NavLink>
                     </li>
-                  }
+                  )}
                 </ul>
               </li>
             </ul>

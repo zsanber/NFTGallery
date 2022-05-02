@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import {Terms} from './Terms';
 import {NavLink} from "react-router-dom"
 
-export const Login=({ setUser, setUserName, setUserId })=> {
+export const Login=({ setUser, setUserName, setUserId, setRole })=> {
   const {register, handleSubmit, formState: { errors },} = useForm();
   const [successful, setSuccessful] = useState(false);
   const [msg, setMsg] = useState('');
@@ -29,6 +29,7 @@ export const Login=({ setUser, setUserName, setUserId })=> {
       setSuccessful(true)
       setUserName(data.username)
       setUserId(data.userId)
+      setRole(data.role)
       setMsg(data.message)
     } catch (err) {
       console.log(err.message);

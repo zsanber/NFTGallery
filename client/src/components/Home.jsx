@@ -7,14 +7,12 @@ import { NavBar } from "./NavBar/NavBar";
 import { Terms } from "./Terms";
 import {NavLink} from "react-router-dom"
 
-export const Home = ({ categoryList, setCategory, selectedCategory, setSelectedCategory, userName, userId }) => {
+export const Home = ({ categoryList, setCategory, selectedCategory, setSelectedCategory, userName, userId, role }) => {
   const [photo, setPhoto] = useState({});
   const [photos, setPhotos] = useState([]);
   const [showModal, setShowModal] = useState(false);  
   const [showInfo, setShowInfo] = useState(false);
   const [photosFiltered, setPhotosFiltered] = useState(photos)
-
- 
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = (item) => {
@@ -60,8 +58,11 @@ console.log(photosFiltered)
   return (
     <>
       <div className="homeBackground">
-        <NavBar  photos={photos} setPhotosFiltered={setPhotosFiltered} categoryList={categoryList} setCategory={setCategory} 
-                selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} userName={userName} />
+      {console.log(role)}
+        <NavBar photos={photos} setPhotosFiltered={setPhotosFiltered} 
+                categoryList={categoryList} setCategory={setCategory} 
+                selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} 
+                userName={userName} role={role} />
         <div className="container">
           <div className="row justify-content-center ">
             <Sidebar userName={userName} />

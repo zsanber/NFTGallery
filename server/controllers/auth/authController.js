@@ -43,7 +43,7 @@ const login = (req, res) => {
     console.log("post....", req.body);
     const { email, password } = req.body;
     db.query(
-        "SELECT iduser,password,username,status FROM user WHERE email=?",
+        "SELECT iduser,password,username,status,role FROM user WHERE email=?",
         [email],
         (err, result) => {
             if (err) res.send({ message: err + 'SELECT HIBA' });
@@ -62,7 +62,7 @@ const login = (req, res) => {
                                     message: "successful login!",
                                     username: result[0].username,
                                     userId: result[0].iduser,
-                                
+                                    role: result[0].role,
                                 });
                             }else
                                 res.status(401).send({

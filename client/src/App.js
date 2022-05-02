@@ -24,6 +24,9 @@ function App() {
     const [userId, setUserId] = useState(
         localStorage.getItem("userId") ? localStorage["userId"] : 0
     );
+    const [role,setRole] = useState(
+        localStorage.getItem("role") ? localStorage["role"] : ""
+    );
 
     useEffect(() => {
         fetchCategoryList();
@@ -33,7 +36,8 @@ function App() {
         localStorage.setItem("user", user);
         localStorage.setItem("userName", userName);
         localStorage.setItem("userId", userId);
-    }, [user, userName, userId]);
+        localStorage.setItem("role", role);
+    }, [user, userName, userId, role]);
 
     const fetchCategoryList = async () => {
         let url = "/category";
@@ -45,13 +49,13 @@ function App() {
         }
     };
     console.log("Appban vagyunk: ", userId);
+    console.log(role);
     return (
         <>
             <HashRouter>
                 {categoryList && (
                     <Routes>
-                        {/*<Route path="/" element={<Home categoryList={categoryList} selectedCategory={selectedCategory} 
-                                         setSelectedCategory={setSelectedCategory} userName={userName}  userId={userId} />} />*/}
+                        
                         <Route
                             path="/confirm/:confirmationCode"
                             element={
@@ -83,6 +87,7 @@ function App() {
                                         setUser={setUser}
                                         setUserName={setUserName}
                                         setUserId={setUserId}
+                                        setRole={setRole}
                                     />
                                 )
                             }
@@ -95,12 +100,14 @@ function App() {
                                     setUser={setUser}
                                     setUserName={setUserName}
                                     setUserId={setUserId}
+                                    setRole={setRole}
                                 />
                                 ) : (
                                     <Login
                                         setUser={setUser}
                                         setUserName={setUserName}
                                         setUserId={setUserId}
+                                        setRole={setRole}
                                     />
                                 )
                             }
@@ -118,12 +125,14 @@ function App() {
                                         }
                                         userName={userName}
                                         userId={userId}
+                                        role ={role}
                                     />
                                 ) : (
                                     <Login
                                         setUser={setUser}
                                         setUserName={setUserName}
                                         setUserId={setUserId}
+                                        setRole={setRole}
                                     />
                                 )
                             }
@@ -135,13 +144,13 @@ function App() {
                                     setUser={setUser}
                                     setUserName={setUserName}
                                     setUserId={setUserId}
+                                    setRole={setRole}
                                 />
                             }
                         />
          
                         <Route path="/register" element={<Register />} />
                     </Routes>
-                    
                 )}
             </HashRouter>
         </>
