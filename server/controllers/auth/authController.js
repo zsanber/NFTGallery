@@ -114,7 +114,7 @@ const register = (req, res) => {
                         <h1>Email confirmation</h1>
                         <h2>Hello ${username} !</h2>
                         <p>Thank you for...</p>
-                        <a href="${process.env.DOMAIN}/confirm/${token}">Click here</a>
+                        <a href="${process.env.DOMAIN}/#/confirm/${token}">Click here</a>
                     </div>
                 `,
                     };
