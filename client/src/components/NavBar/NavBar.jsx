@@ -5,7 +5,15 @@ import "./NavBar.css";
 import myLogo from "../Images/myLogo.png";
 import avatar from "../Images/avatar.svg";
 
-export const NavBar = ({ categoryList, selectedCategory, setSelectedCategory, userName, setPhotosFiltered, photos, role }) => {
+export const NavBar = ({
+  categoryList,
+  selectedCategory,
+  setSelectedCategory,
+  userName,
+  setPhotosFiltered,
+  photos,
+  role,
+}) => {
   return (
     <div className="navcontainer">
       <nav className="navbar navbar-expand-lg">
@@ -38,14 +46,21 @@ export const NavBar = ({ categoryList, selectedCategory, setSelectedCategory, us
               </li>
 
               <li className="dropdown nav-item nav-link">
-                <div className="dropbtn nav-item ">
-                  categories
-                
-                </div>
+                <div className="dropbtn nav-item ">categories</div>
                 <div className="dropdown-content">
-                  <p className="categoryoption" onClick={() => setSelectedCategory(0)}>All</p> 
+                  <p
+                    className="categoryoption"
+                    onClick={() => setSelectedCategory(0)}
+                  >
+                    All
+                  </p>
                   {categoryList.map((item, i) => (
-                    <option className="categoryoption" key={i} value={item} onClick={() => setSelectedCategory(item.idcategorie)}  >
+                    <option
+                      className="categoryoption"
+                      key={i}
+                      value={item}
+                      onClick={() => setSelectedCategory(item.idcategorie)}
+                    >
                       {item.name}
                     </option>
                   ))}
@@ -63,19 +78,17 @@ export const NavBar = ({ categoryList, selectedCategory, setSelectedCategory, us
                     title={userName}
                   />
                 </div>
-                <ul className="dropdown-content">                  
+                <ul className="dropdown-content">
                   <li className="nav-item">
                     <NavLink to="/logout" href="#">
-                      Logout
+                      logout
                     </NavLink>
                   </li>
-                  
-                  {console.log(role)}
 
                   {role == "admin" && (
                     <li className="nav-item">
                       <NavLink to="/admin" href="#">
-                        Admin
+                        admin
                       </NavLink>
                     </li>
                   )}
@@ -83,7 +96,11 @@ export const NavBar = ({ categoryList, selectedCategory, setSelectedCategory, us
               </li>
             </ul>
 
-            <SearchBar placeholder="Search" setPhotosFiltered={setPhotosFiltered} photos={photos} />
+            <SearchBar
+              placeholder="Search"
+              setPhotosFiltered={setPhotosFiltered}
+              photos={photos}
+            />
           </div>
         </div>
       </nav>

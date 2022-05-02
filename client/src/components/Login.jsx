@@ -14,7 +14,6 @@ export const Login=({ setUser, setUserName, setUserId, setRole })=> {
   }, [successful])
 
   const onSubmit = (data) =>{
-    console.log(data);
     let url = '/authRoute/login'
     sendData(url, data)
   }

@@ -9,7 +9,6 @@ export const BitcoinPrice = () => {
         fetch("https://blockchain.info/ticker")
           .then((res) => res.json())
           .then((data) => {
-            // console.log(data);
             setPrice(data.USD.last); 
             setLoading(false);       
           })

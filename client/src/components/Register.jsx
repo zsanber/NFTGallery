@@ -25,7 +25,6 @@ export const Register=()=> {
         formState: { errors },
         } = useForm();
     const onSubmit = (data) => {
-        console.log(data);
         const url='/authRoute/register'
         sendData(url,data)
       }

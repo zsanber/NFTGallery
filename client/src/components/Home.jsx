@@ -30,7 +30,6 @@ export const Home = ({ categoryList, setCategory, selectedCategory, setSelectedC
   }, [selectedCategory]);
 
   const fetchPhotos = async (selectedCategory) => {
-    console.log('home:', userId)
     let url = selectedCategory == 0 
       ? `/photos/${userId}`
       : `/photos/${userId}/categ/` + selectedCategory;
@@ -54,11 +53,10 @@ export const Home = ({ categoryList, setCategory, selectedCategory, setSelectedC
       return;
     }    
   };
-console.log(photosFiltered)
+
   return (
     <>
       <div className="homeBackground">
-      {console.log(role)}
         <NavBar photos={photos} setPhotosFiltered={setPhotosFiltered} 
                 categoryList={categoryList} setCategory={setCategory} 
                 selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} 

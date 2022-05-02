@@ -5,14 +5,12 @@ import axios from 'axios';
 import { validateImage } from "image-validator";
 import { Terms } from "./Terms";
 
-
 export const Upload = ({ userId, categoryList }) => {
   console.log('client:', userId)
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const [photoCategory, setPhotoCategory] = useState(0)
   const [successful, setSuccessFul] = useState(false)
   const [msg, setMsg] = useState('')
-
 
   const onSubmit = (data) => {
     console.log("kliens oldal: ", data);
