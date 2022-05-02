@@ -43,6 +43,10 @@
     form{
         padding-top: 40px;
     }
+    .ml-20{
+        margin-left:0px !important;
+    }
+    
 }
 
 .card{
