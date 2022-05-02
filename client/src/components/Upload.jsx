@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form';
+import {  useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { validateImage } from "image-validator";
@@ -11,6 +12,7 @@ export const Upload = ({ userId, categoryList }) => {
   const [photoCategory, setPhotoCategory] = useState(0)
   const [successful, setSuccessFul] = useState(false)
   const [msg, setMsg] = useState('')
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log("kliens oldal: ", data);
@@ -37,9 +39,9 @@ export const Upload = ({ userId, categoryList }) => {
       console.log('KLIENS OLDAL SEND DATA: ', data)
       setMsg(data.message)
       resp.status === 200 ? setSuccessFul(true) : setSuccessFul(false)
-      // setTimeout(() => {
-      //   window.location = "/"
-      // }, 2000);
+      setTimeout(() => {
+        navigate("/")
+      }, 2000);
     } catch (e) {
       setSuccessFul(false)
       setMsg(`'Error while uploading' : ${data}`)

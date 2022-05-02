@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form';
+import {  useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { NavLink, useParams } from 'react-router-dom';
 import { Terms } from "./Terms";
@@ -11,6 +12,7 @@ export const Edit = ({ userId, categoryList }) => {
 	const [msg, setMsg] = useState('')
 	const [photo, setPhoto] = useState({})
 	const [photoCategory, setPhotoCategory] = useState(0)
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		fetchPhoto()
@@ -40,7 +42,7 @@ export const Edit = ({ userId, categoryList }) => {
 		resp.status === 200 ? setSuccessful(true) : setSuccessful(false)
 		setMsg(resp.data.message)
 		setTimeout(() => {
-			window.location="/"
+			navigate("/")
 		  }, 2000);
 	}
 
