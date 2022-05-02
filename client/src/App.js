@@ -22,7 +22,8 @@ function App() {
         localStorage.getItem("userName") ? localStorage["userName"] : ""
     );
     const [userId, setUserId] = useState(
-        localStorage.getItem("userId") ? localStorage["userId"] : 0);
+        localStorage.getItem("userId") ? localStorage["userId"] : 0
+    );
 
     useEffect(() => {
         fetchCategoryList();
@@ -63,25 +64,45 @@ function App() {
 
                         <Route
                             path="/edit/:id"
-                            element={<Edit categoryList={categoryList} />}
+                            element={ userId != 0 && userId ? ( <Edit categoryList={categoryList} />) : ( <Login
+                                setUser={setUser}
+                                setUserName={setUserName}
+                                setUserId={setUserId}
+                            />)}
                         />
                         <Route
                             path="/upload"
                             element={
+                                userId != 0 && userId ? (
                                 <Upload
                                     categoryList={categoryList}
                                     userId={userId}
                                 />
+                                ) : (
+                                    <Login
+                                        setUser={setUser}
+                                        setUserName={setUserName}
+                                        setUserId={setUserId}
+                                    />
+                                )
                             }
                         />
                         <Route
                             path="/admin"
                             element={
+                                userId != 0 && userId ? (
                                 <Admin
                                     setUser={setUser}
                                     setUserName={setUserName}
                                     setUserId={setUserId}
                                 />
+                                ) : (
+                                    <Login
+                                        setUser={setUser}
+                                        setUserName={setUserName}
+                                        setUserId={setUserId}
+                                    />
+                                )
                             }
                         />
 
