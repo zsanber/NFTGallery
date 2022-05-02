@@ -25,9 +25,18 @@
 }
 
 .table {
-  overflow-y: scroll;
+  overflow: scroll;
 }
 
 .deleteUser {
   cursor: pointer !important;
+}
+
+
+@media (max-width: 1000px) {
+  .createdAt, .email {
+      display:none !important;
+  }
+
+  
 }

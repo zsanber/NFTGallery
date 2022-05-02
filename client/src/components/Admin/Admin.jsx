@@ -2,6 +2,7 @@ import React, { useEffect, useState, useReducer } from "react";
 import { NavBar } from "../NavBar/NavBar";
 import {NavLink} from 'react-router-dom';
 import axios from "axios";
+import Moment from 'moment';
 import "./Admin.css";
 import "../../App.css";
 
@@ -22,7 +23,7 @@ const fetchList=async ()=>{
 }
 
 const handleDelete= async (item)=>{
-  if (window.confirm(`Biztosan ki szeretnéd törölni a ${item.name} nevű usert?`) == true) {
+  if (window.confirm(`Biztosan ki szeretnéd törölni a ${item.username} nevű usert?`) == true) {
     const resp = await axios.delete(`/photos/admin/${item.iduser}`);
     fetchList();
   } else {
@@ -43,9 +44,8 @@ const handleDelete= async (item)=>{
                         <tr>
                             <th className="adminNav col-1" scope="col">userid</th>
                             <th className="adminNav col-2" scope="col">username</th>
-                            <th className="adminNav col-2" scope="col">email</th>
-                            <th className="adminNav col-2" scope="col">created at</th>
-                            <th className="adminNav col-2" scope="col">updated at</th>
+                            <th className="adminNav col-2 email" scope="col">email</th>
+                            <th className="adminNav col-2 createdAt" scope="col">created at</th>
                             <th className="adminNav col-2" scope="col">role</th> 
                             <th className="adminNav col-1" scope="col">delete</th> 
                         </tr>
@@ -54,9 +54,8 @@ const handleDelete= async (item)=>{
                         {list.map((item, index) => <tr key={index}>
                         <td className="align-middle">{item.iduser}</td>
                         <td className="align-middle">{item.username}</td>
-                        <td className="align-middle">{item.email}</td>
-                        <td className="align-middle">{item.created_at}</td>
-                        <td className="align-middle">{item.updated_at}</td>
+                        <td className="align-middle email">{item.email}</td>
+                        <td className="align-middle createdAt">{Moment(item.created_at).format('yyyy.MM.DD')}</td>
                         <td className="align-middle">{item.role}</td>
                         <td onClick={()=>handleDelete(item)} className="deleteUser text-align-center align-middle text-light bg-danger">Delete user 🗑️</td>
                         </tr>)}
