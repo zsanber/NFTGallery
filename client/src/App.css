@@ -49,6 +49,18 @@
     
 }
 
+@media (max-height: 610px){
+    textarea{
+        max-height: 210px
+    }
+} 
+
+@media (max-height: 520px){
+    textarea{
+        max-height: 150px
+    }
+} 
+
 .card{
     border-top: 0 !important;
 }
